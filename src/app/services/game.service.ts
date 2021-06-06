@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Game } from '../models/Game.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  constructor() {}
+  gamesUrl: string = 'http://localhost:5000/api/games';
+  constructor(private http: HttpClient) {}
 
-  getGames = () => {
-    return [
-      {
-        title: 'Dark Souls',
-        gameConsole: 'Switch',
-        description: 'Good game',
-        genres: ['scary', 'action'],
-        coverImage: 'blahsdlab.jpg',
-        rating: 92,
-        releaseDate: new Date('2014-03-29'),
-      },
-    ];
+  getGames = (): Observable<Game[]> => {
+    return this.http.get<Game[]>(this.gamesUrl);
   };
 }

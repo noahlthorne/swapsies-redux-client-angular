@@ -10,8 +10,7 @@ export class GameComponent implements OnInit {
   @Input() game: Game;
   constructor() {}
 
-  ngOnInit(): void {}
-
-  // Set Dynamic Classes
-  setClasses() {}
+  ngOnInit(): void {
+    this.game.releaseDate = new Date(this.game.releaseDate);
+  }
 }
