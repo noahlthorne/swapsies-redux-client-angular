@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from '../../models/Game.model';
-import { GameService } from '../../services/game.service';
+import { Game } from '../../../models/Game.model';
+import { GameService } from '../../../services/game.service';
 
 @Component({
   selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.scss'],
+  templateUrl: './games-container.component.html',
+  styleUrls: ['./games-container.component.scss'],
 })
-export class GamesComponent implements OnInit {
+export class GamesContainerComponent implements OnInit {
   games: Game[];
   constructor(private gameService: GameService) {}
 

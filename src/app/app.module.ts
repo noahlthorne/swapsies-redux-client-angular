@@ -4,11 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GamesComponent } from './components/games/games.component';
+import { GamesContainerComponent } from './components/containers/games-container/games-container.component';
 import { GameComponent } from './components/game/game.component';
 
 @NgModule({
-  declarations: [AppComponent, GamesComponent, GameComponent],
+  declarations: [AppComponent, GamesContainerComponent, GameComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
