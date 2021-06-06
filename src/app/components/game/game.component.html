@@ -1,6 +1,17 @@
 <div>
-  <h3>
-    <input type="checkbox" />
-    {{ game.title }}
-  </h3>
+  <div class="grid-container">
+    <a class="game-link" href="">
+      <div class="game-card">
+        <img src="{{ game.coverImage }}" alt="" class="cover-image" />
+        <div class="game-info">
+          <h5 class="game-title">{{ game.title }}</h5>
+          <p class="game-rating">{{ game.rating }}</p>
+          <p class="game-console">{{ game.gameConsole }}</p>
+          <p class="game-release-date">
+            {{ game.releaseDate | date: "MMMM d, y" }}
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
 </div>
