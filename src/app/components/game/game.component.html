@@ -5,11 +5,20 @@
         <img src="{{ game.coverImage }}" alt="" class="cover-image" />
         <div class="game-info">
           <h5 class="game-title">{{ game.title }}</h5>
-          <p class="game-rating">{{ game.rating }}</p>
-          <p class="game-console">{{ game.gameConsole }}</p>
-          <p class="game-release-date">
-            {{ game.releaseDate | date: "MMMM d, y" }}
-          </p>
+          <div class="rating">
+            <p>Aggregate rating:</p>
+            <p class="rating-score">{{ game.rating | number: "1.0-0" }}</p>
+          </div>
+          <div class="console">
+            <p>Console:</p>
+            <p class="game-console">{{ game.gameConsole }}</p>
+          </div>
+          <div class="release-date">
+            <p>Release Date:</p>
+            <p class="game-release-date">
+              {{ game.releaseDate | date: "MMMM d, y" }}
+            </p>
+          </div>
         </div>
       </div>
     </a>
