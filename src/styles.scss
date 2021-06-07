@@ -1,17 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import "~@angular/material/prebuilt-themes/purple-green.css";
 
 a {
   color: #333;
   text-decoration: none;
-}
-
-.container {
-  padding: 0 1rem;
 }
 
 .btn {
@@ -29,8 +21,9 @@ a {
 html,
 body {
   height: 100%;
+  margin: 0;
+  background-color: #121212;
 }
 body {
-  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
