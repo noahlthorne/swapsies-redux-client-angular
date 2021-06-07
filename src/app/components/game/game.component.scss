@@ -1,20 +1,44 @@
 .game-card {
   width: 264px;
-  height: 500px;
-  border-radius: 4px;
+  height: 39em;
+  background-color: #1d1d1d;
+  color: #858585;
+  border-radius: 8px;
   box-shadow: 0 1px 9px rgb(0 0 0 / 10%);
   padding-bottom: 1em;
+  transition: all 0.2s ease;
   &:hover {
-    transition-duration: 0.7s;
+    transition: all 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 1px 9px rgb(0 0 0 / 30%);
+    box-shadow: 4px 8px 6px 1px rgba(0, 0, 0, 0.4);
+    transform: rotateX(10deg) translate3D(0, -10px, 0) scale(1.03);
   }
 }
 
+.game-title {
+  color: #e0e0e0;
+  font-size: 20px;
+  line-height: 25px;
+  margin-bottom: 27px;
+}
+
 .cover-image {
-  border-radius: 4px 4px 0px 0px;
+  width: 264px;
+  margin: auto;
+  border-radius: 8px 8px 0px 0px;
 }
 
 .game-info {
   padding: 1em;
+}
+
+mat-icon {
+  color: #f5c518;
+}
+
+.rating,
+.console,
+.release-date {
+  display: flex;
+  justify-content: space-between;
 }
