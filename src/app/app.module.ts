@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { GamesContainerComponent } from './components/containers/games-container/games-container.component';
 import { GameComponent } from './components/game/game.component';
 import { ListingCreateComponent } from './components/listing-create/listing-create.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { ListingCreateComponent } from './components/listing-create/listing-crea
     GameComponent,
     ListingCreateComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
