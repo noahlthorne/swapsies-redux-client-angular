@@ -4,12 +4,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GamesContainerComponent } from './components/containers/games-container/games-container.component';
 import { GameComponent } from './components/game/game.component';
 import { ListingCreateComponent } from './components/listing-create/listing-create.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +22,7 @@ import { ListingCreateComponent } from './components/listing-create/listing-crea
     GamesContainerComponent,
     GameComponent,
     ListingCreateComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +31,10 @@ import { ListingCreateComponent } from './components/listing-create/listing-crea
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
