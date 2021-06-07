@@ -16,7 +16,9 @@ export class ListingCreateComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddListing = (form: NgForm) => {
-    console.log(form);
+    if (form.invalid) {
+      return;
+    }
     this.newListing = {
       user: '123',
       game: 'abc',
