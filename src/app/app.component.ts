@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Listing } from './models/Listing.model';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,4 @@ import { Listing } from './models/Listing.model';
 })
 export class AppComponent {
   title = 'swapsies-redux-client';
-  listings: Listing[] = [];
-
-  onListingAdded = async (listing: Listing) => {
-    this.listings.push(listing);
-  };
 }
