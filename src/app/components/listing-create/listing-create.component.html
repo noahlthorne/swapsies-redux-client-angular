@@ -1,1 +1,13 @@
-<p>listing-create works!</p>
+<div class="container">
+  <mat-card>
+    <form (submit)="onAddListing(listForm)" #listForm="ngForm">
+      <mat-form-field>
+        <mat-label>Create Listing</mat-label>
+        <input matInput ngModel name="title" type="text" />
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="submit">
+        Create Listing
+      </button>
+    </form>
+  </mat-card>
+</div>
