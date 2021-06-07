@@ -9,7 +9,12 @@ import { GameComponent } from './components/game/game.component';
 import { ListingCreateComponent } from './components/listing-create/listing-create.component';
 
 @NgModule({
-  declarations: [AppComponent, GamesContainerComponent, GameComponent, ListingCreateComponent],
+  declarations: [
+    AppComponent,
+    GamesContainerComponent,
+    GameComponent,
+    ListingCreateComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
