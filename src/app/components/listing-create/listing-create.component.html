@@ -3,7 +3,15 @@
     <form (submit)="onAddListing(listForm)" #listForm="ngForm">
       <mat-form-field>
         <mat-label>Create Listing</mat-label>
-        <input matInput ngModel name="title" type="text" />
+        <input
+          matInput
+          ngModel
+          name="title"
+          type="text"
+          required
+          #title="ngModel"
+        />
+        <mat-error *ngIf="title.invalid">Title is required</mat-error>
       </mat-form-field>
       <button mat-raised-button color="accent" type="submit">
         Create Listing
