@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GamesContainerComponent } from './components/containers/games-container/games-container.component';
-import { GameComponent } from './components/game/game.component';
+import { GameCardComponent } from './components/game-card/game-card.component';
 import { ListingCreateComponent } from './components/listing-create/listing-create.component';
 import { HeaderComponent } from './components/header/header.component';
 
@@ -20,7 +20,7 @@ import { HeaderComponent } from './components/header/header.component';
   declarations: [
     AppComponent,
     GamesContainerComponent,
-    GameComponent,
+    GameCardComponent,
     ListingCreateComponent,
     HeaderComponent,
   ],
