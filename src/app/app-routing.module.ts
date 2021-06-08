@@ -6,8 +6,8 @@ import { GameShowComponent } from './components/show/game-show/game-show.compone
 
 const routes: Routes = [
   { path: '', component: GamesContainerComponent },
-  { path: 'listings', component: ListingCreateComponent },
-  { path: 'game/:id', component: GameShowComponent },
+  { path: 'games/:gameId/listings', component: ListingCreateComponent },
+  { path: 'games/:gameId', component: GameShowComponent },
 ];
 
 @NgModule({
