@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GamesContainerComponent } from './components/containers/games-container/games-container.component';
+import { ListingCreateComponent } from './components/listing-create/listing-create.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: GamesContainerComponent },
+  { path: 'create', component: ListingCreateComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
