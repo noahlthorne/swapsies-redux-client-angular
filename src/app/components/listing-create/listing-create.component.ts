@@ -24,6 +24,6 @@ export class ListingCreateComponent implements OnInit {
       game: 'abc',
       condition: 'new',
     };
-    this.listingCreated.emit(this.newListing);
+    form.resetForm();
   };
 }
