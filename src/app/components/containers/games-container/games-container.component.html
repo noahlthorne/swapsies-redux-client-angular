@@ -1,6 +1,6 @@
 <div class="games-container">
   <div class="grid-container" *ngIf="games.length > 0">
-    <app-game *ngFor="let game of games" [game]="game"> </app-game>
+    <app-game-card *ngFor="let game of games" [game]="game"> </app-game-card>
   </div>
   <h3 class="mat-body-1 info-text" *ngIf="games.length <= 0">
     No games to display
