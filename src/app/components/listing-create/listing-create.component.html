@@ -2,7 +2,6 @@
   <mat-card>
     <form (submit)="onAddListing(listForm)" #listForm="ngForm">
       <mat-form-field>
-        <mat-label>Create Listing</mat-label>
         <input
           matInput
           ngModel
@@ -10,6 +9,7 @@
           type="text"
           required
           #title="ngModel"
+          placeholder="Listing Title"
         />
         <mat-error *ngIf="title.invalid">Title is required</mat-error>
       </mat-form-field>
