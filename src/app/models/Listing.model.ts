@@ -1,6 +1,7 @@
 export interface Listing {
-  user: String;
-  game: String;
-  condition: String;
-  status?: String;
+  _id: string;
+  user: string;
+  game: string;
+  condition: string;
+  status?: string;
 }
