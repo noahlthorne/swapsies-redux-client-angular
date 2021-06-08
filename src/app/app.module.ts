@@ -15,6 +15,7 @@ import { GamesContainerComponent } from './components/containers/games-container
 import { GameCardComponent } from './components/cards/game-card/game-card.component';
 import { ListingCreateComponent } from './components/listing-create/listing-create.component';
 import { HeaderComponent } from './components/header/header.component';
+import { GameShowComponent } from './components/show/game-show/game-show.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HeaderComponent } from './components/header/header.component';
     GameCardComponent,
     ListingCreateComponent,
     HeaderComponent,
+    GameShowComponent,
   ],
   imports: [
     BrowserModule,
