@@ -5,7 +5,7 @@ import { ListingCreateComponent } from './components/listing-create/listing-crea
 
 const routes: Routes = [
   { path: '', component: GamesContainerComponent },
-  { path: 'create', component: ListingCreateComponent },
+  { path: 'listings', component: ListingCreateComponent },
 ];
 
 @NgModule({
