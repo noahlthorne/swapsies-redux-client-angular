@@ -20,6 +20,7 @@ export class ListingCreateComponent implements OnInit {
       return;
     }
     this.newListing = {
+      _id: '12314515',
       user: '123',
       game: 'abc',
       condition: 'new',
