@@ -12,20 +12,20 @@ import { GameService } from 'src/app/services/game/game.service';
 export class GameShowComponent implements OnInit, OnDestroy {
   game: Game;
   private gameSub: Subscription;
-  private gameId: string | null;
+  private gameId: string;
 
   constructor(private gameService: GameService, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      this.gameId = paramMap.get('gameId');
-    });
-    this.gameSub = this.gameService.getGame(this.gameId).subscribe((game) => {
-      this.game = game;
+      if (paramMap.has('gameId')) {
+        this.gameId = paramMap.get('gameId')!;
+        this.game = this.gameService.getGame(this.gameId)!;
+      }
     });
   }
 
   ngOnDestroy() {
-    this.gameSub.unsubscribe();
+    // this.gameSub.unsubscribe();
   }
 }

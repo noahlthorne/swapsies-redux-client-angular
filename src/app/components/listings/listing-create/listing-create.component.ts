@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Listing } from '../../models/Listing.model';
+import { Listing } from '../../../models/Listing.model';
 
 @Component({
   selector: 'app-listing-create',
@@ -8,6 +8,7 @@ import { Listing } from '../../models/Listing.model';
   styleUrls: ['./listing-create.component.scss'],
 })
 export class ListingCreateComponent implements OnInit {
+  listing: Listing;
   enteredValue: string = '';
   newListing: Listing;
   @Output() listingCreated = new EventEmitter<Listing>();
@@ -20,11 +21,13 @@ export class ListingCreateComponent implements OnInit {
       return;
     }
     this.newListing = {
-      _id: '12314515',
+      id: '12314515',
       user: '123',
       game: 'abc',
       condition: 'new',
     };
+    console.log(form.value);
+    // this.listingService.addListing(input);
     form.resetForm();
   };
 }

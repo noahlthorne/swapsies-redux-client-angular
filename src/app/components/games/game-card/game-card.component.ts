@@ -10,7 +10,5 @@ export class GameCardComponent implements OnInit {
   @Input() game: Game;
   constructor() {}
 
-  ngOnInit(): void {
-    this.game.releaseDate = new Date(this.game.releaseDate);
-  }
+  ngOnInit(): void {}
 }

@@ -1,5 +1,5 @@
 export interface Listing {
-  _id: string;
+  id: string;
   user: string;
   game: string;
   condition: string;

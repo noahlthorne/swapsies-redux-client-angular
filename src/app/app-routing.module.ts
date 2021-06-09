@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GamesContainerComponent } from './components/containers/games-container/games-container.component';
-import { ListingCreateComponent } from './components/listing-create/listing-create.component';
-import { GameShowComponent } from './components/show/game-show/game-show.component';
+import { GamesContainerComponent } from './components/games/games-container/games-container.component';
+import { ListingCreateComponent } from './components/listings/listing-create/listing-create.component';
+import { GameShowComponent } from './components/games/game-show/game-show.component';
 
 const routes: Routes = [
   { path: '', component: GamesContainerComponent },

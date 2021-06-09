@@ -11,11 +11,12 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GamesContainerComponent } from './components/containers/games-container/games-container.component';
-import { GameCardComponent } from './components/cards/game-card/game-card.component';
-import { ListingCreateComponent } from './components/listing-create/listing-create.component';
+import { GamesContainerComponent } from './components/games/games-container/games-container.component';
+import { GameCardComponent } from './components/games/game-card/game-card.component';
+import { ListingCreateComponent } from './components/listings/listing-create/listing-create.component';
 import { HeaderComponent } from './components/header/header.component';
-import { GameShowComponent } from './components/show/game-show/game-show.component';
+import { GameShowComponent } from './components/games/game-show/game-show.component';
+import { ListingsListComponent } from './components/listings/listings-list/listings-list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { GameShowComponent } from './components/show/game-show/game-show.compone
     ListingCreateComponent,
     HeaderComponent,
     GameShowComponent,
+    ListingsListComponent,
   ],
   imports: [
     BrowserModule,
