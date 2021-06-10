@@ -3,14 +3,14 @@
     <div class="listing-card">
       <div class="listing-info">
         <h5 class="listing-title">{{ listing.condition }}</h5>
-        <div class="rating">
-          <p>Aggregate rating:</p>
+        <div class="listing-user">
+          <p>Listed by:</p>
+          <p>{{ listing.user.firstName }}</p>
         </div>
-        <div class="console">
-          <p>Console:</p>
-        </div>
-        <div class="release-date">
-          <p>Release Date:</p>
+        <div class="status">
+          <p>Status:</p>
+          <p *ngIf="listing.status">{{ listing.status }}</p>
+          <p *ngIf="!listing.status">Unavailable</p>
         </div>
       </div>
     </div>
