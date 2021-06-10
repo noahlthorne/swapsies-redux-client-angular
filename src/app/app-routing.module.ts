@@ -11,7 +11,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'games/:gameId/listings',
+    path: 'games/:gameId/listing-new',
     component: ListingCreateComponent,
   },
   {
