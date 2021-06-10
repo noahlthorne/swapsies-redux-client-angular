@@ -13,18 +13,8 @@ export class ListingService {
 
   constructor(private http: HttpClient) {}
 
-  getListingUpdateListener = () => {
-    return this.listingsUpdated.asObservable();
-  };
-
-  addListing = (listing: Listing) => {
-    this.listings.push(listing);
-    this.listingsUpdated.next([...this.listings]);
-  };
-
   getGameListings = (gameId: string) => {
     const gamesListingsUrl: string = `http://localhost:5000/api/games/${gameId}/listings`;
-
     return this.http
       .get<{ listings: any }>(gamesListingsUrl)
       .pipe(
@@ -44,5 +34,16 @@ export class ListingService {
         this.listings = transformedListings;
         this.listingsUpdated.next([...this.listings]);
       });
+  };
+
+  getListingUpdateListener = () => {
+    return this.listingsUpdated.asObservable();
+  };
+
+  getListingUser = async (userId: string) => {};
+
+  addListing = (listing: Listing) => {
+    this.listings.push(listing);
+    this.listingsUpdated.next([...this.listings]);
   };
 }

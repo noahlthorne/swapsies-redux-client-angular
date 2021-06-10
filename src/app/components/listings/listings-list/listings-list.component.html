@@ -1,1 +1,4 @@
-<p>listings-list works!</p>
+<app-listing-card
+  *ngFor="let listing of listings"
+  [listing]="listing"
+></app-listing-card>
