@@ -11,6 +11,7 @@ import { GameService } from 'src/app/services/game/game.service';
 })
 export class GameShowComponent implements OnInit, OnDestroy {
   game: Game;
+  display: boolean = false;
   private gameSub: Subscription;
   private gameId: string;
 
@@ -29,5 +30,9 @@ export class GameShowComponent implements OnInit, OnDestroy {
     if (this.gameSub) {
       this.gameSub.unsubscribe();
     }
+  }
+
+  onClick() {
+    this.display = !this.display;
   }
 }

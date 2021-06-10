@@ -8,9 +8,14 @@
     <h1>{{ game.rating | number: "1.0-0" }}</h1>
     <h1>{{ game.releaseDate | date: "MMMM d, y" }}</h1>
   </div>
-  <a [routerLink]="['listing-new']" mat-raised-button class="list-game-button">
+  <a (click)="onClick()" mat-raised-button class="list-game-button">
     List game!
   </a>
+
+  <div id="list-create-render" *ngIf="display">
+    <app-listing-create></app-listing-create>
+  </div>
+
   <div class="listings">
     <app-listings-container></app-listings-container>
   </div>
