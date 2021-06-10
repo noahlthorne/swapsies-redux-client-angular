@@ -45,7 +45,7 @@ export class GameService {
   }
 
   getGame = (gameId: string) => {
-    return this.games.find((game) => (game.id = gameId));
+    return this.http.get<Game>(`${this.gamesUrl}/${gameId}`);
   };
 
   getGameListings = (gameId: string | null): Observable<Listing> => {

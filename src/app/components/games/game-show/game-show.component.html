@@ -1,18 +1,18 @@
 <div class="container">
   <div class="game-details">
-    <img src="{{ game.coverImage }}" alt="" />
-    <h1>{{ game.title }}</h1>
-    <h1>{{ game.gameConsole }}</h1>
-    <h1>{{ game.genres }}</h1>
-    <h1>{{ game.description }}</h1>
-    <h1>{{ game.rating | number: "1.0-0" }}</h1>
-    <h1>{{ game.releaseDate | date: "MMMM d, y" }}</h1>
+    <img src="{{ game?.coverImage }}" alt="" />
+    <h1>{{ game?.title }}</h1>
+    <h1>{{ game?.gameConsole }}</h1>
+    <h1>{{ game?.genres }}</h1>
+    <h1>{{ game?.description }}</h1>
+    <h1>{{ game?.rating | number: "1.0-0" }}</h1>
+    <h1>{{ game?.releaseDate | date: "MMMM d, y" }}</h1>
   </div>
   <a (click)="onClick()" mat-raised-button class="list-game-button">
     List game!
   </a>
 
-  <div id="list-create-render" *ngIf="display">
+  <div [@popOverState]="stateName" id="list-create-render" *ngIf="display">
     <app-listing-create></app-listing-create>
   </div>
 
