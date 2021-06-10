@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Game } from '../../../models/Game.model';
 import { GameService } from '../../../services/game/game.service';
@@ -10,12 +10,12 @@ import { GameService } from '../../../services/game/game.service';
 })
 export class GamesContainerComponent implements OnInit, OnDestroy {
   games: Game[] = [];
-  private gameSub: Subscription;
+  private gamesSub: Subscription;
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
     this.gameService.getGames();
-    this.gameSub = this.gameService
+    this.gamesSub = this.gameService
       .getGameUpdateListener()
       .subscribe((games: Game[]) => {
         this.games = games;
@@ -23,6 +23,6 @@ export class GamesContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.gameSub.unsubscribe();
+    this.gamesSub.unsubscribe();
   }
 }
