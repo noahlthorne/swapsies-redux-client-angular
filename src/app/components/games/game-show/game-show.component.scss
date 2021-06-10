@@ -1,8 +1,19 @@
 .container {
-  margin: 2em auto;
-  width: 80em;
-  height: 80em;
-  background-color: #1d1d1d;
+  margin: auto;
+  width: 90%;
+  padding: 2em;
   color: #858585;
   border-radius: 4px;
+}
+
+.game-details {
+  background-color: #1d1d1d;
+  padding: 2em;
+  border-radius: 4px;
+  margin: auto;
+  margin-bottom: 2em;
+}
+
+.listings {
+  margin: auto;
 }

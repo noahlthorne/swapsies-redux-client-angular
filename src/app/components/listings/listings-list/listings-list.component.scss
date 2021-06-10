@@ -2,6 +2,8 @@
   margin: 0 auto;
   display: grid;
   grid-gap: 1.3em;
+  grid-template-columns: repeat(4, 2fr);
+  grid-template-rows: 1fr;
   @media (min-width: 100px) and (max-width: 500px) {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -9,12 +11,6 @@
     grid-template-columns: repeat(3, 1fr);
   }
   @media (min-width: 1200px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  @media (min-width: 2000px) {
-    grid-template-columns: repeat(7, 1fr);
-  }
-  @media (min-width: 2200px) {
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }

@@ -26,6 +26,8 @@ export class GameShowComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.gameSub.unsubscribe();
+    if (this.gameSub) {
+      this.gameSub.unsubscribe();
+    }
   }
 }

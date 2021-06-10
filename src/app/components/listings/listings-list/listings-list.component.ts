@@ -34,6 +34,8 @@ export class ListingsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.listingsSub.unsubscribe();
+    if (this.listingsSub) {
+      this.listingsSub.unsubscribe();
+    }
   }
 }

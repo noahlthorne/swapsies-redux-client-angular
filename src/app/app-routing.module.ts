@@ -5,9 +5,19 @@ import { ListingCreateComponent } from './components/listings/listing-create/lis
 import { GameShowComponent } from './components/games/game-show/game-show.component';
 
 const routes: Routes = [
-  { path: '', component: GamesListComponent },
-  { path: 'games/:gameId/listings', component: ListingCreateComponent },
-  { path: 'games/:gameId', component: GameShowComponent },
+  {
+    path: '',
+    component: GamesListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'games/:gameId/listings',
+    component: ListingCreateComponent,
+  },
+  {
+    path: 'games/:gameId',
+    component: GameShowComponent,
+  },
 ];
 
 @NgModule({
