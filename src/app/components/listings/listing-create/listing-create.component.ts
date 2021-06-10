@@ -20,12 +20,6 @@ export class ListingCreateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.newListing = {
-      id: '12314515',
-      user: '123',
-      game: 'abc',
-      condition: 'new',
-    };
     console.log(form.value);
     // this.listingService.addListing(input);
     form.resetForm();
