@@ -11,9 +11,22 @@
   padding: 2em;
   border-radius: 4px;
   margin: auto;
-  margin-bottom: 2em;
 }
 
 .listings {
   margin: auto;
+}
+
+.list-game-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+  font-size: 21px;
+  width: 9em;
+  margin-bottom: 2em;
+  margin-top: 2em;
+  background-color: #8fffc3;
+  color: #232323;
+  align-items: center;
 }
