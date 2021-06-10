@@ -5,10 +5,10 @@ import { GameService } from '../../../services/game/game.service';
 
 @Component({
   selector: 'app-games',
-  templateUrl: './games-container.component.html',
-  styleUrls: ['./games-container.component.scss'],
+  templateUrl: './games-list.component.html',
+  styleUrls: ['./games-list.component.scss'],
 })
-export class GamesContainerComponent implements OnInit, OnDestroy {
+export class GamesListComponent implements OnInit, OnDestroy {
   games: Game[] = [];
   private gamesSub: Subscription;
   constructor(private gameService: GameService) {}

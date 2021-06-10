@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GamesContainerComponent } from './components/games/games-container/games-container.component';
+import { GamesListComponent } from './components/games/games-list/games-list.component';
 import { GameCardComponent } from './components/games/game-card/game-card.component';
 import { ListingCreateComponent } from './components/listings/listing-create/listing-create.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -22,7 +22,7 @@ import { ListingCardComponent } from './components/listings/listing-card/listing
 @NgModule({
   declarations: [
     AppComponent,
-    GamesContainerComponent,
+    GamesListComponent,
     GameCardComponent,
     ListingCreateComponent,
     HeaderComponent,
