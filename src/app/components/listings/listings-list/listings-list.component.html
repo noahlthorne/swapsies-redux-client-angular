@@ -1,4 +1,11 @@
-<app-listing-card
-  *ngFor="let listing of listings"
-  [listing]="listing"
-></app-listing-card>
+<div class="listings-container">
+  <div class="grid-container" *ngIf="listings.length > 0">
+    <app-listing-card
+      *ngFor="let listing of listings"
+      [listing]="listing"
+    ></app-listing-card>
+  </div>
+  <h3 class="mat-body-1 info-text" *ngIf="listings.length <= 0">
+    <h3>No listings for this game</h3>
+  </h3>
+</div>
