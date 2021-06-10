@@ -5,8 +5,10 @@
     <h1>{{ game.gameConsole }}</h1>
     <h1>{{ game.genres }}</h1>
     <h1>{{ game.description }}</h1>
-    <h1>{{ game.rating }}</h1>
-    <h1>{{ game.releaseDate }}</h1>
+    <h1>{{ game.rating | number: "1.0-0" }}</h1>
+    <h1>{{ game.releaseDate | date: "MMMM d, y" }}</h1>
   </div>
-  <div class="listings"></div>
+  <div class="listings">
+    <app-listings-list></app-listings-list>
+  </div>
 </div>
