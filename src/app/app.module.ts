@@ -17,6 +17,7 @@ import { ListingCreateComponent } from './components/listings/listing-create/lis
 import { HeaderComponent } from './components/header/header.component';
 import { GameShowComponent } from './components/games/game-show/game-show.component';
 import { ListingsListComponent } from './components/listings/listings-list/listings-list.component';
+import { ListingCardComponent } from './components/listings/listing-card/listing-card.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ListingsListComponent } from './components/listings/listings-list/listi
     HeaderComponent,
     GameShowComponent,
     ListingsListComponent,
+    ListingCardComponent,
   ],
   imports: [
     BrowserModule,
