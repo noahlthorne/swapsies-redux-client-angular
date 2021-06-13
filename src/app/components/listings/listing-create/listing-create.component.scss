@@ -9,17 +9,10 @@ form {
 
 mat-card {
   width: 30%;
-  height: 130px;
+  height: 220px;
+  padding: 24px;
   background-color: #1f1f1f;
   border-radius: 8px;
-}
-
-button {
-  height: 40px;
-  width: 75%;
-  margin: auto;
-  margin-top: 32px;
-  background-color: #1f1f1f;
 }
 
 input {
@@ -29,4 +22,31 @@ input {
 .container {
   margin-bottom: 24px;
   border-radius: 8px;
+}
+
+#create-button {
+  height: 40px;
+  width: 100%;
+  margin: auto;
+  background-color: #8fffc3;
+}
+
+hr {
+  margin: -24px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  width: auto;
+  border-color: #bb86fc;
+  opacity: 0.7;
+}
+
+#image-button {
+  height: 40px;
+  width: 30%;
+  margin: auto;
+  margin-top: 32px;
+}
+
+input[type="file"] {
+  visibility: hidden;
 }

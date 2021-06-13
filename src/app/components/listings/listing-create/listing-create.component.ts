@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Listing } from '../../../models/Listing.model';
 
 @Component({
@@ -11,17 +11,25 @@ export class ListingCreateComponent implements OnInit {
   listing: Listing;
   enteredValue: string = '';
   newListing: Listing;
+  form: FormGroup;
   @Output() listingCreated = new EventEmitter<Listing>();
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      title: new FormControl('', {
+        validators: [Validators.required],
+        updateOn: 'submit',
+      }),
+    });
+  }
 
-  onAddListing = (form: NgForm) => {
-    if (form.invalid) {
+  onAddListing = () => {
+    if (this.form.invalid) {
       return;
     }
-    console.log(form.value);
+    console.log(this.form.value);
     // this.listingService.addListing(input);
-    form.resetForm();
+    this.form.reset();
   };
 }

@@ -1,19 +1,33 @@
 <div class="container">
   <mat-card>
-    <form (submit)="onAddListing(listForm)" #listForm="ngForm">
+    <form [formGroup]="form" (submit)="onAddListing()">
       <mat-form-field>
         <input
           matInput
           ngModel
-          name="title"
           type="text"
-          required
-          #title="ngModel"
+          formControlName="title"
           placeholder="Listing Title"
         />
-        <mat-error *ngIf="title.invalid">Title is required</mat-error>
       </mat-form-field>
+      <mat-error *ngIf="form.get('title')?.invalid"
+        >Please enter a listing title</mat-error
+      >
+      <div>
+        <button
+          id="image-button"
+          type="button"
+          mat-stroked-button
+          color="primary"
+          (click)="filePicker.click()"
+        >
+          Pick Image
+        </button>
+        <input type="file" #filePicker />
+      </div>
+      <hr />
       <button
+        id="create-button"
         mat-raised-button
         color="accent"
         class="create-listing-btn"
