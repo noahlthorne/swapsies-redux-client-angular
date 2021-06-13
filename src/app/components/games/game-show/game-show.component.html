@@ -8,7 +8,7 @@
     <h1>{{ game?.rating | number: "1.0-0" }}</h1>
     <h1>{{ game?.releaseDate | date: "MMMM d, y" }}</h1>
   </div>
-  <a (click)="onClick()" mat-raised-button class="list-game-button">
+  <a (click)="toggle()" mat-raised-button class="list-game-button">
     List game!
   </a>
 

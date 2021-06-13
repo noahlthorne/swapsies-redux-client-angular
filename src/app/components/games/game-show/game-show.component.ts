@@ -17,20 +17,20 @@ import {
   styleUrls: ['./game-show.component.scss'],
   animations: [
     trigger('popOverState', [
-      state(
-        'show',
-        style({
-          opacity: 1,
-        })
-      ),
-      state(
-        'hide',
-        style({
-          opacity: 0,
-        })
-      ),
-      transition('show => hide', animate('600ms ease-out')),
-      transition('hide => show', animate('1000ms ease-in')),
+      transition(':enter', [
+        style({ height: 0, opacity: 0, marginBottom: 0 }),
+        animate(
+          '0.4s ease-out',
+          style({ height: 140, opacity: 1, marginBottom: 45 })
+        ),
+      ]),
+      transition(':leave', [
+        style({ height: 140, opacity: 1, marginBottom: 45 }),
+        animate(
+          '0.6s ease-in',
+          style({ height: 0, opacity: 0, marginBottom: 0 })
+        ),
+      ]),
     ]),
   ],
 })
@@ -59,7 +59,7 @@ export class GameShowComponent implements OnInit, OnDestroy {
     }
   }
 
-  onClick() {
+  toggle() {
     this.display = !this.display;
   }
 
