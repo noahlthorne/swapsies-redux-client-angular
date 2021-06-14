@@ -12,6 +12,7 @@ export class ListingCreateComponent implements OnInit {
   enteredValue: string = '';
   newListing: Listing;
   form: FormGroup;
+  imagePreview: string;
   @Output() listingCreated = new EventEmitter<Listing>();
   constructor() {}
 
@@ -20,6 +21,9 @@ export class ListingCreateComponent implements OnInit {
       title: new FormControl('', {
         validators: [Validators.required],
         updateOn: 'submit',
+      }),
+      image: new FormControl('', {
+        validators: [Validators.required],
       }),
     });
   }
@@ -31,5 +35,16 @@ export class ListingCreateComponent implements OnInit {
     console.log(this.form.value);
     // this.listingService.addListing(input);
     this.form.reset();
+  };
+
+  onImagePicked = (event: Event) => {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.form.patchValue({ image: file });
+    this.form.get('image')?.updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   };
 }

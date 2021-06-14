@@ -23,7 +23,10 @@
         >
           Pick Image
         </button>
-        <input type="file" #filePicker />
+        <input type="file" #filePicker (change)="onImagePicked($event)" />
+      </div>
+      <div class="image-preview" *ngIf="imagePreview">
+        <img [src]="imagePreview" [alt]="form.value.title" />
       </div>
       <hr />
       <button
