@@ -48,13 +48,13 @@ export class ListingService {
   addListing = (gameId: string, listing: ListingShow) => {
     const gamesListingsUrl: string = `http://localhost:5000/api/games/${gameId}/listings`;
     const listingData = new FormData();
-    console.log(listing);
     listingData.append('image', listing.image);
     // listingData.append('user', listing.user.id);
     listingData.append('game', this.game.id);
     listingData.append('condition', listing.condition);
-    console.log('LISTING DATA', listingData);
-    this.http.post(gamesListingsUrl, listing);
+    this.http.post(gamesListingsUrl, listing).subscribe((responseData) => {
+      console.log(responseData);
+    });
     // this.listings.push(listing);
     this.listingsUpdated.next([...this.listings]);
   };
