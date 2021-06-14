@@ -15,20 +15,9 @@ mat-card {
   border-radius: 8px;
 }
 
-input {
-  width: 90%;
-}
-
-.container {
-  margin-bottom: 24px;
-  border-radius: 8px;
-}
-
-#create-button {
-  height: 40px;
+mat-form-field {
   width: 100%;
-  margin: auto;
-  background-color: #8fffc3;
+  padding: 0;
 }
 
 hr {
@@ -40,15 +29,17 @@ hr {
   opacity: 0.7;
 }
 
-#image-button {
-  height: 40px;
-  width: 30%;
-  margin: auto;
-  margin-top: 32px;
+input {
+  width: 90%;
 }
 
 input[type="file"] {
   visibility: hidden;
+}
+
+.container {
+  margin-bottom: 24px;
+  border-radius: 8px;
 }
 
 .image-preview {
@@ -58,4 +49,23 @@ input[type="file"] {
 
 .image-preview img {
   height: 100%;
+}
+
+.condition-select {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+#create-button {
+  height: 40px;
+  width: 100%;
+  margin: auto;
+  background-color: #8fffc3;
+}
+
+#image-button {
+  height: 40px;
+  width: 30%;
+  margin: auto;
+  margin-top: 32px;
 }
