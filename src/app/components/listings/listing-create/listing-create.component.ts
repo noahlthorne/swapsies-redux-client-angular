@@ -28,7 +28,6 @@ export class ListingCreateComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl('', {
         validators: [Validators.required],
-        updateOn: 'submit',
       }),
       condition: new FormControl('', {
         validators: [Validators.required],
