@@ -20,12 +20,12 @@ import {
       transition(':enter', [
         style({ height: 0, opacity: 0, marginBottom: 0 }),
         animate(
-          '0.4s ease-out',
-          style({ height: 140, opacity: 1, marginBottom: 45 })
+          '0.6s ease-out',
+          style({ height: '*', opacity: 1, marginBottom: 45 })
         ),
       ]),
       transition(':leave', [
-        style({ height: 140, opacity: 1, marginBottom: 45 }),
+        style({ height: '*', opacity: 1, marginBottom: 45 }),
         animate(
           '0.6s ease-in',
           style({ height: 0, opacity: 0, marginBottom: 0 })
