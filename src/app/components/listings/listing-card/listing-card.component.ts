@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Listing } from 'src/app/models/Listing.model';
+import { ListingShow } from 'src/app/models/Listing.model';
 
 @Component({
   selector: 'app-listing-card',
@@ -7,7 +7,7 @@ import { Listing } from 'src/app/models/Listing.model';
   styleUrls: ['./listing-card.component.scss'],
 })
 export class ListingCardComponent implements OnInit {
-  @Input() listing: Listing;
+  @Input() listing: ListingShow;
   constructor() {}
 
   ngOnInit(): void {}

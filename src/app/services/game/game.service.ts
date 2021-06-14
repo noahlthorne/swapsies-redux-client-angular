@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Game } from '../../models/Game.model';
-import { Listing } from 'src/app/models/Listing.model';
+import { ListingShow } from 'src/app/models/Listing.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -48,7 +48,7 @@ export class GameService {
     return this.http.get<Game>(`${this.gamesUrl}/${gameId}`);
   };
 
-  getGameListings = (gameId: string | null): Observable<Listing> => {
-    return this.http.get<Listing>(`${this.gamesUrl}/${gameId}`);
+  getGameListings = (gameId: string | null): Observable<ListingShow> => {
+    return this.http.get<ListingShow>(`${this.gamesUrl}/${gameId}`);
   };
 }

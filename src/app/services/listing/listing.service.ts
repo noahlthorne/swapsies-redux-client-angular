@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Listing } from 'src/app/models/Listing.model';
+import { ListingSave, ListingShow } from 'src/app/models/Listing.model';
 import { map } from 'rxjs/operators';
+import { Game } from 'src/app/models/Game.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListingService {
-  private listings: Listing[] = [];
-  private listingsUpdated = new Subject<Listing[]>();
+  private game: Game;
+  private listings: ListingShow[] = [];
+  private listingsUpdated = new Subject<ListingShow[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +22,7 @@ export class ListingService {
       .pipe(
         map((listingData) => {
           return listingData.listings.map((listing: any) => {
+            this.game = listing.game;
             return {
               id: listing._id,
               status: listing.status,
@@ -42,8 +45,17 @@ export class ListingService {
 
   getListingUser = async (userId: string) => {};
 
-  addListing = (listing: Listing) => {
-    this.listings.push(listing);
+  addListing = (gameId: string, listing: ListingShow) => {
+    const gamesListingsUrl: string = `http://localhost:5000/api/games/${gameId}/listings`;
+    const listingData = new FormData();
+    console.log(listing);
+    listingData.append('image', listing.image);
+    // listingData.append('user', listing.user.id);
+    listingData.append('game', this.game.id);
+    listingData.append('condition', listing.condition);
+    console.log('LISTING DATA', listingData);
+    this.http.post(gamesListingsUrl, listing);
+    // this.listings.push(listing);
     this.listingsUpdated.next([...this.listings]);
   };
 }

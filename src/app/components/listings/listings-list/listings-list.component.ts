@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Listing } from 'src/app/models/Listing.model';
+import { ListingShow } from 'src/app/models/Listing.model';
 import { ListingService } from 'src/app/services/listing/listing.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ListingService } from 'src/app/services/listing/listing.service';
   styleUrls: ['./listings-list.component.scss'],
 })
 export class ListingsListComponent implements OnInit, OnDestroy {
-  listings: Listing[] = [];
+  listings: ListingShow[] = [];
   private listingsSub: Subscription;
   private gameId: string;
 
@@ -28,7 +28,7 @@ export class ListingsListComponent implements OnInit, OnDestroy {
     });
     this.listingsSub = this.listingService
       .getListingUpdateListener()
-      .subscribe((listings: Listing[]) => {
+      .subscribe((listings: ListingShow[]) => {
         this.listings = listings;
       });
   }

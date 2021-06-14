@@ -20,14 +20,14 @@ import {
       transition(':enter', [
         style({ height: 0, opacity: 0, marginBottom: 0 }),
         animate(
-          '0.6s ease-out',
+          '0.6s ease-in',
           style({ height: '*', opacity: 1, marginBottom: 45 })
         ),
       ]),
       transition(':leave', [
         style({ height: '*', opacity: 1, marginBottom: 45 }),
         animate(
-          '0.6s ease-in',
+          '0.8s ease-out',
           style({ height: 0, opacity: 0, marginBottom: 0 })
         ),
       ]),

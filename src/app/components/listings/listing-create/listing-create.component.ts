@@ -1,6 +1,9 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Listing } from '../../../models/Listing.model';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ListingService } from 'src/app/services/listing/listing.service';
+import { ListingShow, ListingSave } from '../../../models/Listing.model';
+import { mimeType } from './mime-type.validator';
 
 @Component({
   selector: 'app-listing-create',
@@ -8,13 +11,18 @@ import { Listing } from '../../../models/Listing.model';
   styleUrls: ['./listing-create.component.scss'],
 })
 export class ListingCreateComponent implements OnInit {
-  listing: Listing;
+  listing: ListingShow;
   enteredValue: string = '';
-  newListing: Listing;
+  newListing: ListingSave;
   form: FormGroup;
   imagePreview: string;
-  @Output() listingCreated = new EventEmitter<Listing>();
-  constructor() {}
+  selected: string;
+  @Output() listingCreated = new EventEmitter<ListingShow>();
+
+  constructor(
+    private listingService: ListingService,
+    public route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -22,8 +30,12 @@ export class ListingCreateComponent implements OnInit {
         validators: [Validators.required],
         updateOn: 'submit',
       }),
+      condition: new FormControl('', {
+        validators: [Validators.required],
+      }),
       image: new FormControl('', {
         validators: [Validators.required],
+        asyncValidators: [mimeType],
       }),
     });
   }
@@ -32,8 +44,8 @@ export class ListingCreateComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    console.log(this.form.value);
-    // this.listingService.addListing(input);
+    const gameId = this.route.snapshot.paramMap.get('gameId')!;
+    this.listingService.addListing(gameId, this.form.value);
     this.form.reset();
   };
 
