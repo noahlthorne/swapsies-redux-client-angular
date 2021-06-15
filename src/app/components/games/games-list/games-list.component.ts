@@ -75,6 +75,7 @@ export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onConsoleSelect(tabChangeEvent: MatTabChangeEvent) {
+    this.isLoading = true;
     const gameConsole = tabChangeEvent.tab.textLabel;
     this.selectedConsole = gameConsole;
     this.gameService.getGames(
