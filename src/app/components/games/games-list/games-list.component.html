@@ -1,4 +1,10 @@
 <div class="games-container">
+  <mat-tab-group #tabRef (selectedTabChange)="onConsoleSelect($event)">
+    <mat-tab
+      *ngFor="let console of gameConsoles"
+      label="{{ console }}"
+    ></mat-tab>
+  </mat-tab-group>
   <mat-paginator
     [length]="totalGames"
     [pageSize]="gamesPerPage"

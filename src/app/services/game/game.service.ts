@@ -10,34 +10,44 @@ import { map } from 'rxjs/operators';
 })
 export class GameService {
   private games: Game[] = [];
-  private gamesUpdated = new Subject<Game[]>();
+  private gamesUpdated = new Subject<{ games: Game[]; gamesCount: number }>();
   private gamesUrl: string = 'http://localhost:5000/api/games';
 
   constructor(private http: HttpClient) {}
 
-  getGames = (gamesPerPage: number, currentPage: number) => {
-    const queryParams = `?pagesize=${gamesPerPage}&currentpage=${currentPage}`;
+  getGames = (
+    gamesPerPage: number,
+    currentPage: number,
+    selectedConsole: string
+  ) => {
+    const queryParams = `?gameconsole=${selectedConsole}&pagesize=${gamesPerPage}&currentpage=${currentPage}`;
     return this.http
-      .get<{ games: any }>(this.gamesUrl + queryParams)
+      .get<{ games: any; maxGames: number }>(this.gamesUrl + queryParams)
       .pipe(
         map((gameData) => {
-          return gameData.games.map((game: any) => {
-            return {
-              id: game._id,
-              title: game.title,
-              gameConsole: game.gameConsole,
-              genres: game.genres,
-              description: game.description,
-              coverImage: game.coverImage,
-              rating: game.rating,
-              releaseDate: new Date(game.releaseDate),
-            };
-          });
+          return {
+            games: gameData.games.map((game: any) => {
+              return {
+                id: game._id,
+                title: game.title,
+                gameConsole: game.gameConsole,
+                genres: game.genres,
+                description: game.description,
+                coverImage: game.coverImage,
+                rating: game.rating,
+                releaseDate: new Date(game.releaseDate),
+              };
+            }),
+            maxGames: gameData.maxGames,
+          };
         })
       )
       .subscribe((transformedGames) => {
-        this.games = transformedGames;
-        this.gamesUpdated.next([...this.games]);
+        this.games = transformedGames.games;
+        this.gamesUpdated.next({
+          games: [...this.games],
+          gamesCount: transformedGames.maxGames,
+        });
       });
   };
 

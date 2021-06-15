@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Subscription } from 'rxjs';
 import { Game } from '../../../models/Game.model';
 import { GameService } from '../../../services/game/game.service';
@@ -12,7 +13,17 @@ import { GameService } from '../../../services/game/game.service';
 export class GamesListComponent implements OnInit, OnDestroy {
   games: Game[] = [];
   isLoading: boolean = false;
-  totalGames: number = 20;
+  gameConsoles: Array<string> = [
+    'PC (Microsoft Windows)',
+    'PlayStation 4',
+    'Xbox One',
+    'Mac',
+    'Nintendo Switch',
+    'PlayStation 5',
+    'Google Stadia',
+  ];
+  selectedConsole: string = 'PC (Microsoft Windows)';
+  totalGames: number = 0;
   gamesPerPage: number = 10;
   currentPage: number = 1;
   pageSizeOptions: Array<number> = [10, 25, 50];
@@ -22,12 +33,17 @@ export class GamesListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.gameService.getGames(this.gamesPerPage, this.currentPage);
+    this.gameService.getGames(
+      this.gamesPerPage,
+      this.currentPage,
+      this.selectedConsole
+    );
     this.gamesSub = this.gameService
       .getGameUpdateListener()
-      .subscribe((games: Game[]) => {
+      .subscribe((gameData: { games: Game[]; gamesCount: number }) => {
         this.isLoading = false;
-        this.games = games;
+        this.games = gameData.games;
+        this.totalGames = gameData.gamesCount;
       });
   }
 
@@ -40,6 +56,20 @@ export class GamesListComponent implements OnInit, OnDestroy {
     const { pageSize, pageIndex } = pageData;
     this.currentPage = pageIndex + 1;
     this.gamesPerPage = pageSize;
-    this.gameService.getGames(this.gamesPerPage, this.currentPage);
+    this.gameService.getGames(
+      this.gamesPerPage,
+      this.currentPage,
+      this.selectedConsole
+    );
+  }
+
+  onConsoleSelect(tabChangeEvent: MatTabChangeEvent) {
+    const gameConsole = tabChangeEvent.tab.textLabel;
+    this.selectedConsole = gameConsole;
+    this.gameService.getGames(
+      this.gamesPerPage,
+      this.currentPage,
+      this.selectedConsole
+    );
   }
 }
