@@ -1,9 +1,4 @@
 <div class="games-container">
-  <mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
-  <div class="grid-container" *ngIf="games.length > 0 && !isLoading">
-    <app-game-card *ngFor="let game of games" [game]="game"> </app-game-card>
-  </div>
-
   <mat-paginator
     [length]="totalGames"
     [pageSize]="gamesPerPage"
@@ -11,6 +6,11 @@
     (page)="onChangedPage($event)"
     *ngIf="games.length > 0"
   ></mat-paginator>
+
+  <mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
+  <div class="grid-container" *ngIf="games.length > 0 && !isLoading">
+    <app-game-card *ngFor="let game of games" [game]="game"> </app-game-card>
+  </div>
 
   <h3 class="mat-body-1 info-text" *ngIf="games.length <= 0 && !isLoading">
     No games to display
