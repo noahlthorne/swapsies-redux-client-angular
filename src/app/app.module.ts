@@ -25,6 +25,8 @@ import { ListingsContainerComponent } from './components/listings/listings-conta
 import { ListingsListComponent } from './components/listings/listings-list/listings-list.component';
 import { ListingCardComponent } from './components/listings/listing-card/listing-card.component';
 import { ListingCreateComponent } from './components/listings/listing-create/listing-create.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ListingCreateComponent } from './components/listings/listing-create/lis
     ListingsListComponent,
     ListingCardComponent,
     ListingCreateComponent,
+    SignupComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
