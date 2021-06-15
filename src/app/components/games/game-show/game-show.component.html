@@ -1,12 +1,13 @@
 <div class="container">
   <div class="game-details">
-    <img src="{{ game?.coverImage }}" alt="" />
+    <mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
+    <img class="game-cover" src="{{ game?.coverImage }}" alt="" />
     <h1>{{ game?.title }}</h1>
-    <h1>{{ game?.gameConsole }}</h1>
-    <h1>{{ game?.genres }}</h1>
-    <h1>{{ game?.description }}</h1>
-    <h1>{{ game?.rating | number: "1.0-0" }}</h1>
-    <h1>{{ game?.releaseDate | date: "MMMM d, y" }}</h1>
+    <h2>{{ game?.gameConsole }}</h2>
+    <h3>{{ game?.genres }}</h3>
+    <p>{{ game?.description }}</p>
+    <h3>{{ game?.rating | number: "1.0-0" }}</h3>
+    <h3>{{ game?.releaseDate | date: "MMMM d, y" }}</h3>
   </div>
   <a (click)="toggle()" mat-raised-button class="list-game-button">
     List game!

@@ -37,16 +37,20 @@ import {
 export class GameShowComponent implements OnInit, OnDestroy {
   game: Game;
   display: boolean = false;
+  isLoading: boolean = false;
+
   private gameSub: Subscription;
   private gameId: string;
 
   constructor(private gameService: GameService, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('gameId')) {
         this.gameId = paramMap.get('gameId')!;
         this.gameService.getGame(this.gameId).subscribe((game) => {
+          this.isLoading = false;
           this.game = game;
         });
       }
