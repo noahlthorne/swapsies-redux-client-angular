@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +53,7 @@ import { ListingCreateComponent } from './components/listings/listing-create/lis
     MatProgressSpinnerModule,
     MatSelectModule,
     MatPaginatorModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
