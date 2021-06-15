@@ -9,6 +9,7 @@
     [pageSize]="gamesPerPage"
     [pageSizeOptions]="pageSizeOptions"
     (page)="onChangedPage($event)"
+    *ngIf="games.length > 0"
   ></mat-paginator>
 
   <h3 class="mat-body-1 info-text" *ngIf="games.length <= 0 && !isLoading">
