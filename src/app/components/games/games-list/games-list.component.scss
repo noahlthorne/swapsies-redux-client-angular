@@ -1,3 +1,28 @@
+mat-spinner {
+  margin: auto;
+  margin-top: 8em;
+  color: #8fffc3;
+}
+
+mat-paginator {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+}
+
+mat-tab-group {
+  position: sticky;
+  top: 0;
+  margin-bottom: 2rem;
+  transition: 0.5s background-color ease;
+  z-index: 1;
+  opacity: 1;
+}
+
+.mat-tabs-opaque {
+  background-color: #424242;
+}
+
 .games-container {
   padding: 2em;
 }
@@ -28,13 +53,7 @@
   color: antiquewhite;
 }
 
-mat-spinner {
-  margin: auto;
-  margin-top: 8em;
-  color: #8fffc3;
-}
-
-mat-paginator {
-  margin-bottom: 2rem;
-  border-radius: 8px;
+.consoles {
+  display: flex;
+  justify-content: space-around;
 }

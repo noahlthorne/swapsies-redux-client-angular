@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { GameService } from '../../../services/game/game.service';
   templateUrl: './games-list.component.html',
   styleUrls: ['./games-list.component.scss'],
 })
-export class GamesListComponent implements OnInit, OnDestroy {
+export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
   games: Game[] = [];
   isLoading: boolean = false;
   gameConsoles: Array<string> = [
@@ -45,6 +45,17 @@ export class GamesListComponent implements OnInit, OnDestroy {
         this.games = gameData.games;
         this.totalGames = gameData.gamesCount;
       });
+  }
+
+  ngAfterViewInit() {
+    const matTabs = document.querySelector('#tab-group');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= 120 && matTabs) {
+        matTabs.classList.add('mat-tabs-opaque');
+      } else if (window.scrollY <= 120 && matTabs) {
+        matTabs.classList.remove('mat-tabs-opaque');
+      }
+    });
   }
 
   ngOnDestroy() {
