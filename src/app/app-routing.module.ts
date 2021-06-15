@@ -4,6 +4,7 @@ import { GamesListComponent } from './components/games/games-list/games-list.com
 import { ListingCreateComponent } from './components/listings/listing-create/listing-create.component';
 import { GameShowComponent } from './components/games/game-show/game-show.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'games/:gameId',
     component: GameShowComponent,
+  },
+  {
+    path: 'sign-up',
+    component: SignupComponent,
   },
   {
     path: 'login',
