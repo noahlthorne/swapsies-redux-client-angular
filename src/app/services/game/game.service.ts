@@ -15,9 +15,10 @@ export class GameService {
 
   constructor(private http: HttpClient) {}
 
-  getGames = () => {
+  getGames = (gamesPerPage: number, currentPage: number) => {
+    const queryParams = `?pagesize=${gamesPerPage}&currentpage=${currentPage}`;
     return this.http
-      .get<{ games: any }>(this.gamesUrl)
+      .get<{ games: any }>(this.gamesUrl + queryParams)
       .pipe(
         map((gameData) => {
           return gameData.games.map((game: any) => {
