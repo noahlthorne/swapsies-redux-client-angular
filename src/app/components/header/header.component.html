@@ -1,8 +1,13 @@
 <mat-toolbar>
   <div class="content">
-    <a routerLink="/"> Listings</a>
-    <a mat-button routerLink="/listings" routerLinkActive="mat-accent"
-      >Create a Listing!</a
-    >
+    <div class="home">
+      <a routerLink="/"> Listings</a>
+    </div>
+    <div class="auth">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent"
+        >Sign up</a
+      >
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+    </div>
   </div>
 </mat-toolbar>
