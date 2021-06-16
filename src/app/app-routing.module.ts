@@ -5,6 +5,7 @@ import { ListingCreateComponent } from './components/listings/listing-create/lis
 import { GameShowComponent } from './components/games/game-show/game-show.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
   {
     path: 'games/:gameId/listing-new',
     component: ListingCreateComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'games/:gameId',
@@ -33,5 +35,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuard],
 })
 export class AppRoutingModule {}
