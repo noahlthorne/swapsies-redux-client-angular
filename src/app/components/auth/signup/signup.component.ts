@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/services/auth/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,12 +9,12 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
   isLoading: boolean = false;
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 
   onSignup(form: NgForm) {
-    console.log(form.value);
+    this.userService.addUser(form.value);
     form.reset();
   }
 }
