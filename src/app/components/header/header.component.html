@@ -4,10 +4,21 @@
       <a routerLink="/"> Listings</a>
     </div>
     <div class="auth">
-      <a mat-button routerLink="/sign-up" routerLinkActive="mat-accent"
+      <a
+        *ngIf="!userIsAuthenticated"
+        mat-button
+        routerLink="/sign-up"
+        routerLinkActive="mat-accent"
         >Sign up</a
       >
-      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+      <a
+        *ngIf="!userIsAuthenticated"
+        mat-button
+        routerLink="/login"
+        routerLinkActive="mat-accent"
+        >Login</a
+      >
+      <button *ngIf="userIsAuthenticated" mat-button>Logout</button>
     </div>
   </div>
 </mat-toolbar>
