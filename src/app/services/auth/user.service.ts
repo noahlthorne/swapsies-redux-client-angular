@@ -8,7 +8,7 @@ import { AuthData, User } from 'src/app/models/User.model';
 })
 export class UserService {
   private isAuthenticated = false;
-  private authToken: string;
+  private authToken: string | null;
   private authStatusListener = new Subject<boolean>();
 
   private addUserUrl: string = 'http://localhost:5000/api/users';
@@ -48,5 +48,11 @@ export class UserService {
           this.authStatusListener.next(true);
         }
       });
+  }
+
+  logoutUser() {
+    this.authToken = null;
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
   }
 }
