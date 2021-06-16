@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { AuthData, User } from 'src/app/models/User.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  private isAuthenticated = false;
   private authToken: string;
+  private authStatusListener = new Subject<boolean>();
 
   private addUserUrl: string = 'http://localhost:5000/api/users';
   private loginUserUrl: string = 'http://localhost:5000/api/sessions';
@@ -15,6 +18,14 @@ export class UserService {
 
   getAuthToken() {
     return this.authToken;
+  }
+
+  getAuthStatus() {
+    return this.isAuthenticated;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
   }
 
   addUser(user: User) {
@@ -32,6 +43,10 @@ export class UserService {
       .subscribe((response) => {
         console.log(response);
         this.authToken = response.accessToken;
+        if (this.authToken) {
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+        }
       });
   }
 }
