@@ -52,8 +52,8 @@ export class ListingService {
     // listingData.append('user', listing.user.id);
     listingData.append('game', this.game.id);
     listingData.append('condition', listing.condition);
-    this.http.post(gamesListingsUrl, listing).subscribe((responseData) => {
-      console.log(responseData);
+    this.http.post(gamesListingsUrl, listing).subscribe((response) => {
+      console.log(response);
     });
     // this.listings.push(listing);
     this.listingsUpdated.next([...this.listings]);
