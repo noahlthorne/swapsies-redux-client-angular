@@ -47,11 +47,8 @@ export class ListingService {
 
   addListing = (gameId: string, listing: ListingShow) => {
     const gamesListingsUrl: string = `http://localhost:5000/api/games/${gameId}/listings`;
-    const listingData = new FormData();
-    listingData.append('image', listing.image);
-    // listingData.append('user', listing.user.id);
-    listingData.append('game', this.game.id);
-    listingData.append('condition', listing.condition);
+    console.log(listing);
+    listing.image = listing.image.name;
     this.http.post(gamesListingsUrl, listing).subscribe((response) => {
       console.log(response);
     });
