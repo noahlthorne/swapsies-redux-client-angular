@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     const user: User = form.value;
     this.userService.addUser(user);
     form.reset();
