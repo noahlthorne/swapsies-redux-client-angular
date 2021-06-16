@@ -47,9 +47,7 @@ export class UserService {
         this.authToken = response.accessToken;
         if (this.authToken) {
           const expiresInDuration = response.expiresIn;
-          this.tokenTimer = setTimeout(() => {
-            this.logoutUser();
-          }, expiresInDuration * 1000);
+          this.setAuthTimeout(expiresInDuration);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           const now = new Date();
@@ -62,6 +60,20 @@ export class UserService {
       });
   }
 
+  autoAuthUser() {
+    let expiresIn;
+    const authInformation = this.getAuthData();
+    if (!authInformation) return;
+    const now = new Date();
+    expiresIn = authInformation.expirationDate.getTime() - now.getTime();
+    if (expiresIn > 0) {
+      this.authToken = authInformation.token;
+      this.isAuthenticated = true;
+      this.authStatusListener.next(true);
+      this.setAuthTimeout(expiresIn / 1000);
+    }
+  }
+
   logoutUser() {
     this.authToken = null;
     this.isAuthenticated = false;
@@ -69,6 +81,13 @@ export class UserService {
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(['/']);
+  }
+
+  private setAuthTimeout(duration: number) {
+    console.log('Setting timer: ' + duration);
+    this.tokenTimer = setTimeout(() => {
+      this.logoutUser();
+    }, duration * 1000);
   }
 
   private saveAuthData(authToken: string, expirationDate: Date) {
@@ -79,5 +98,15 @@ export class UserService {
   private clearAuthData() {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
+  }
+
+  private getAuthData() {
+    const token = localStorage.getItem('token');
+    const expirationDate = localStorage.getItem('expiration');
+    if (!token || !expirationDate) return;
+    return {
+      token: token,
+      expirationDate: new Date(expirationDate),
+    };
   }
 }
