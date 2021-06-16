@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthData, User } from 'src/app/models/User.model';
 
@@ -14,7 +15,7 @@ export class UserService {
   private addUserUrl: string = 'http://localhost:5000/api/users';
   private loginUserUrl: string = 'http://localhost:5000/api/sessions';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getAuthToken() {
     return this.authToken;
@@ -46,6 +47,7 @@ export class UserService {
         if (this.authToken) {
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
+          this.router.navigate(['/']);
         }
       });
   }
@@ -54,5 +56,6 @@ export class UserService {
     this.authToken = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+    this.router.navigate(['/']);
   }
 }
