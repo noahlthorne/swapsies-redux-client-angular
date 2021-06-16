@@ -10,6 +10,7 @@ import { AuthData, User } from 'src/app/models/User.model';
 export class UserService {
   private isAuthenticated = false;
   private authToken: string | null;
+  private tokenTimer: NodeJS.Timer;
   private authStatusListener = new Subject<boolean>();
 
   private addUserUrl: string = 'http://localhost:5000/api/users';
@@ -37,7 +38,7 @@ export class UserService {
 
   loginUser(authData: AuthData) {
     this.http
-      .post<{ accessToken: string; refreshToken: string }>(
+      .post<{ accessToken: string; refreshToken: string; expiresIn: number }>(
         this.loginUserUrl,
         authData
       )
@@ -45,6 +46,10 @@ export class UserService {
         console.log(response);
         this.authToken = response.accessToken;
         if (this.authToken) {
+          const expiresInDuration = response.expiresIn;
+          this.tokenTimer = setTimeout(() => {
+            this.logoutUser();
+          }, expiresInDuration * 1000);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           this.router.navigate(['/']);
@@ -57,5 +62,6 @@ export class UserService {
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.router.navigate(['/']);
+    clearTimeout(this.tokenTimer);
   }
 }
