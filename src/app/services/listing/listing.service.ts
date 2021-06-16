@@ -52,7 +52,7 @@ export class ListingService {
     this.http.post(gamesListingsUrl, listing).subscribe((response) => {
       console.log(response);
     });
-    // this.listings.push(listing);
+    this.listings.push(listing);
     this.listingsUpdated.next([...this.listings]);
   };
 }
