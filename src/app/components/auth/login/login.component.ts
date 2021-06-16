@@ -21,6 +21,6 @@ export class LoginComponent implements OnInit {
     }
     const authData: AuthData = form.value;
     this.userService.loginUser(authData);
-    form.reset();
+    // form.reset();
   }
 }
