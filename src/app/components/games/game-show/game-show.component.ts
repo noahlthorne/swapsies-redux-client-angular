@@ -10,6 +10,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { UserService } from 'src/app/services/auth/user.service';
 
 @Component({
   selector: 'app-game-show',
@@ -38,11 +39,17 @@ export class GameShowComponent implements OnInit, OnDestroy {
   game: Game;
   display: boolean = false;
   isLoading: boolean = false;
+  userIsAuthenticated: boolean = false;
 
   private gameSub: Subscription;
   private gameId: string;
+  private authStatusSub: Subscription;
 
-  constructor(private gameService: GameService, public route: ActivatedRoute) {}
+  constructor(
+    private gameService: GameService,
+    private userService: UserService,
+    public route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -55,12 +62,20 @@ export class GameShowComponent implements OnInit, OnDestroy {
         });
       }
     });
+    this.userIsAuthenticated = this.userService.getAuthStatus();
+
+    this.authStatusSub = this.userService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
 
   ngOnDestroy() {
     if (this.gameSub) {
       this.gameSub.unsubscribe();
     }
+    this.authStatusSub.unsubscribe();
   }
 
   toggle() {
