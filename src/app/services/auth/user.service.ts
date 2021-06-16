@@ -6,10 +6,16 @@ import { AuthData, User } from 'src/app/models/User.model';
   providedIn: 'root',
 })
 export class UserService {
+  private authToken: string;
+
   private addUserUrl: string = 'http://localhost:5000/api/users';
   private loginUserUrl: string = 'http://localhost:5000/api/sessions';
 
   constructor(private http: HttpClient) {}
+
+  getAuthToken() {
+    return this.authToken;
+  }
 
   addUser(user: User) {
     this.http.post(this.addUserUrl, user).subscribe((response) => {
@@ -18,8 +24,14 @@ export class UserService {
   }
 
   loginUser(authData: AuthData) {
-    this.http.post(this.loginUserUrl, authData).subscribe((response) => {
-      console.log(response);
-    });
+    this.http
+      .post<{ accessToken: string; refreshToken: string }>(
+        this.loginUserUrl,
+        authData
+      )
+      .subscribe((response) => {
+        console.log(response);
+        this.authToken = response.accessToken;
+      });
   }
 }
