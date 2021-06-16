@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     const authData: AuthData = form.value;
     this.userService.loginUser(authData);
     // form.reset();
