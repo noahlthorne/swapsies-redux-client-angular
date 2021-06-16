@@ -9,7 +9,12 @@
     <h3>{{ game?.rating | number: "1.0-0" }}</h3>
     <h3>{{ game?.releaseDate | date: "MMMM d, y" }}</h3>
   </div>
-  <a (click)="toggle()" mat-raised-button class="list-game-button">
+  <a
+    *ngIf="userIsAuthenticated"
+    (click)="toggle()"
+    mat-raised-button
+    class="list-game-button"
+  >
     List game!
   </a>
 
