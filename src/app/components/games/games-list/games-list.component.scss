@@ -6,8 +6,7 @@ mat-spinner {
 
 mat-paginator {
   margin-bottom: 2rem;
-  margin-top: 2rem;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 mat-tab-group {
@@ -56,4 +55,13 @@ mat-tab-group {
 .consoles {
   display: flex;
   justify-content: space-around;
+}
+
+#filter-options {
+  display: flex;
+  justify-content: left;
+}
+
+#sort {
+  margin-right: 2rem;
 }
