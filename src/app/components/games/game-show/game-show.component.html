@@ -19,7 +19,7 @@
   </a>
 
   <div [@popOverState]="stateName" id="list-create-render" *ngIf="display">
-    <app-listing-create></app-listing-create>
+    <app-listing-create [game]="game"></app-listing-create>
   </div>
 
   <div class="listings">
