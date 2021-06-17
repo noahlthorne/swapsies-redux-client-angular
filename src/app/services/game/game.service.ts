@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Game } from '../../models/Game.model';
+import { Game, SortOption } from '../../models/Game.model';
 import { ListingShow } from 'src/app/models/Listing.model';
 import { map } from 'rxjs/operators';
 
@@ -18,9 +18,10 @@ export class GameService {
   getGames = (
     gamesPerPage: number,
     currentPage: number,
-    selectedConsole: string
+    selectedConsole: string,
+    sortBy: SortOption
   ) => {
-    const queryParams = `?gameconsole=${selectedConsole}&pagesize=${gamesPerPage}&currentpage=${currentPage}`;
+    const queryParams = `?gameconsole=${selectedConsole}&sortby=${sortBy.value}&orderby=${sortBy.order}&pagesize=${gamesPerPage}&currentpage=${currentPage}`;
     return this.http
       .get<{ games: any; maxGames: number }>(this.gamesUrl + queryParams)
       .pipe(

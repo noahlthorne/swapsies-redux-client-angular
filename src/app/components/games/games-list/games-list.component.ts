@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Subscription } from 'rxjs';
-import { Game } from '../../../models/Game.model';
+import { Game, SortOption } from '../../../models/Game.model';
 import { GameService } from '../../../services/game/game.service';
 
 @Component({
@@ -12,6 +12,28 @@ import { GameService } from '../../../services/game/game.service';
 })
 export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
   games: Game[] = [];
+  sortBy: SortOption = {
+    field: 'Title',
+    value: 'title',
+    order: 'asc',
+  };
+  sortOptions: SortOption[] = [
+    {
+      field: 'Title',
+      value: 'title',
+      order: 'asc',
+    },
+    {
+      field: 'Rating',
+      value: 'rating',
+      order: 'desc',
+    },
+    {
+      field: 'Release date',
+      value: 'releaseDate',
+      order: 'desc',
+    },
+  ];
   isLoading: boolean = false;
   gameConsoles: Array<string> = [
     'PC (Microsoft Windows)',
@@ -36,7 +58,8 @@ export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.gameService.getGames(
       this.gamesPerPage,
       this.currentPage,
-      this.selectedConsole
+      this.selectedConsole,
+      this.sortBy
     );
     this.gamesSub = this.gameService
       .getGameUpdateListener()
@@ -70,7 +93,8 @@ export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.gameService.getGames(
       this.gamesPerPage,
       this.currentPage,
-      this.selectedConsole
+      this.selectedConsole,
+      this.sortBy
     );
   }
 
@@ -81,7 +105,18 @@ export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.gameService.getGames(
       this.gamesPerPage,
       this.currentPage,
-      this.selectedConsole
+      this.selectedConsole,
+      this.sortBy
+    );
+  }
+
+  sortByChange(sortBy: SortOption) {
+    this.sortBy = sortBy;
+    this.gameService.getGames(
+      this.gamesPerPage,
+      this.currentPage,
+      this.selectedConsole,
+      this.sortBy
     );
   }
 }
