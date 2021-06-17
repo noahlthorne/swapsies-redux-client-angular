@@ -57,7 +57,20 @@ export class GameService {
   }
 
   getGame = (gameId: string) => {
-    return this.http.get<Game>(`${this.gamesUrl}/${gameId}`);
+    return this.http.get<any>(`${this.gamesUrl}/${gameId}`).pipe(
+      map((gameData) => {
+        return {
+          id: gameData._id,
+          title: gameData.title,
+          gameConsole: gameData.gameConsole,
+          genres: gameData.genres,
+          description: gameData.description,
+          coverImage: gameData.coverImage,
+          rating: gameData.rating,
+          releaseDate: new Date(gameData.releaseDate),
+        };
+      })
+    );
   };
 
   getGameListings = (gameId: string | null): Observable<ListingShow> => {
