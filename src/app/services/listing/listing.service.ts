@@ -45,14 +45,15 @@ export class ListingService {
 
   getListingUser = async (userId: string) => {};
 
-  addListing = (gameId: string, listing: ListingShow) => {
+  addListing = (gameId: string, condition: string, image: File | string) => {
     const gamesListingsUrl: string = `http://localhost:5000/api/games/${gameId}/listings`;
-    console.log(listing);
-    listing.image = listing.image.name;
-    this.http.post(gamesListingsUrl, listing).subscribe((response) => {
-      console.log(response);
+    const listingData = new FormData();
+    listingData.append('game', gameId);
+    listingData.append('condition', condition);
+    listingData.append('image', image);
+    this.http.post(gamesListingsUrl, listingData).subscribe((response) => {
+      // this.listings.push(listing);
+      this.listingsUpdated.next([...this.listings]);
     });
-    this.listings.push(listing);
-    this.listingsUpdated.next([...this.listings]);
   };
 }
