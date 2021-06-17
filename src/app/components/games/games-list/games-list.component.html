@@ -9,13 +9,24 @@
       label="{{ console }}"
     ></mat-tab>
   </mat-tab-group>
-  <mat-paginator
-    [length]="totalGames"
-    [pageSize]="gamesPerPage"
-    [pageSizeOptions]="pageSizeOptions"
-    (page)="onChangedPage($event)"
-    *ngIf="games.length > 0"
-  ></mat-paginator>
+
+  <div id="filter-options">
+    <mat-form-field id="sort" appearance="fill">
+      <mat-label>Sort games</mat-label>
+      <mat-select [(value)]="sortBy" (selectionChange)="sortByChange(sortBy)">
+        <mat-option *ngFor="let option of sortOptions" [value]="option">{{
+          option.field
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-paginator
+      [length]="totalGames"
+      [pageSize]="gamesPerPage"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onChangedPage($event)"
+      *ngIf="games.length > 0"
+    ></mat-paginator>
+  </div>
 
   <mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
   <div class="grid-container" *ngIf="games.length > 0 && !isLoading">
