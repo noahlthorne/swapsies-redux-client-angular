@@ -8,3 +8,9 @@ export interface Game {
   rating: number;
   releaseDate: Date;
 }
+
+export interface SortOption {
+  field: string;
+  value: string;
+  order: string;
+}
