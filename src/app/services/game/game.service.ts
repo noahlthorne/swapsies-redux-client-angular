@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Game, SortOption } from '../../models/Game.model';
-import { ListingShow } from 'src/app/models/Listing.model';
+import { Listing } from 'src/app/models/Listing.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -60,20 +60,14 @@ export class GameService {
     return this.http.get<any>(`${this.gamesUrl}/${gameId}`).pipe(
       map((gameData) => {
         return {
-          id: gameData._id,
-          title: gameData.title,
-          gameConsole: gameData.gameConsole,
-          genres: gameData.genres,
-          description: gameData.description,
-          coverImage: gameData.coverImage,
-          rating: gameData.rating,
-          releaseDate: new Date(gameData.releaseDate),
+          ...gameData.game,
+          releaseDate: new Date(gameData.game.releaseDate),
         };
       })
     );
   };
 
-  getGameListings = (gameId: string | null): Observable<ListingShow> => {
-    return this.http.get<ListingShow>(`${this.gamesUrl}/${gameId}`);
+  getGameListings = (gameId: string | null): Observable<Listing> => {
+    return this.http.get<Listing>(`${this.gamesUrl}/${gameId}`);
   };
 }

@@ -1,16 +1,9 @@
 import { Game } from './Game.model';
-export interface ListingShow {
-  id: string;
-  user: any;
-  game: Game;
-  image: any;
-  condition: string;
-  status?: string;
-}
+import { User } from './User.model';
 
-export interface ListingSave {
-  id: string;
-  user: string;
+export interface Listing {
+  _id: string;
+  user: User;
   game: string;
   image: any;
   condition: string;

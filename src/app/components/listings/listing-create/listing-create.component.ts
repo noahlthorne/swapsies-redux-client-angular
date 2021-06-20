@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Game } from 'src/app/models/Game.model';
 import { ListingService } from 'src/app/services/listing/listing.service';
-import { ListingShow, ListingSave } from '../../../models/Listing.model';
+import { Listing } from '../../../models/Listing.model';
 import { mimeType } from './mime-type.validator';
 
 @Component({
@@ -13,13 +13,13 @@ import { mimeType } from './mime-type.validator';
 })
 export class ListingCreateComponent implements OnInit {
   @Input() game: Game;
-  listing: ListingShow;
+  listing: Listing;
   enteredValue: string = '';
-  newListing: ListingSave;
+  newListing: Listing;
   form: FormGroup;
   imagePreview: string;
   selected: string;
-  @Output() listingCreated = new EventEmitter<ListingShow>();
+  @Output() listingCreated = new EventEmitter<Listing>();
 
   constructor(
     private listingService: ListingService,

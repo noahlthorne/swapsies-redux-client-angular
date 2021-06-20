@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { ListingSave, ListingShow } from 'src/app/models/Listing.model';
+import { Listing } from 'src/app/models/Listing.model';
 import { map } from 'rxjs/operators';
 import { Game } from 'src/app/models/Game.model';
 
@@ -10,8 +10,8 @@ import { Game } from 'src/app/models/Game.model';
 })
 export class ListingService {
   private game: Game;
-  private listings: ListingShow[] = [];
-  private listingsUpdated = new Subject<ListingShow[]>();
+  private listings: Listing[] = [];
+  private listingsUpdated = new Subject<Listing[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -50,10 +50,13 @@ export class ListingService {
     const listingData = new FormData();
     listingData.append('game', gameId);
     listingData.append('condition', condition);
-    listingData.append('image', image);
-    this.http.post(gamesListingsUrl, listingData).subscribe((response) => {
-      // this.listings.push(listing);
-      this.listingsUpdated.next([...this.listings]);
-    });
+    listingData.append('image', image, 'test');
+    this.http
+      .post<{ listing: Listing }>(gamesListingsUrl, listingData)
+      .subscribe((response) => {
+        console.log('GLORP', response);
+        this.listings.push(response.listing);
+        this.listingsUpdated.next([...this.listings]);
+      });
   };
 }
