@@ -30,13 +30,8 @@ export class GameService {
             games: gameData.games.map((game: any) => {
               return {
                 id: game._id,
-                title: game.title,
-                gameConsole: game.gameConsole,
-                genres: game.genres,
-                description: game.description,
-                coverImage: game.coverImage,
-                rating: game.rating,
                 releaseDate: new Date(game.releaseDate),
+                ...game,
               };
             }),
             maxGames: gameData.maxGames,
