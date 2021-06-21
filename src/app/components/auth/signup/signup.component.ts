@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/User.model';
 import { UserService } from 'src/app/services/auth/user.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -13,10 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   private authStatusSub: Subscription;
-  constructor(
-    private userService: UserService,
-    private _snackBar: MatSnackBar
-  ) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.authStatusSub = this.userService
@@ -24,7 +20,6 @@ export class SignupComponent implements OnInit, OnDestroy {
       .subscribe((authStatus) => {
         if (!authStatus) {
           this.isLoading = false;
-          this.openSnackBar('Invalid email or password');
         }
       });
   }
@@ -37,12 +32,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     const user: User = form.value;
     this.userService.addUser(user);
     form.reset();
-  }
-
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'dismiss', {
-      panelClass: ['grey-snackbar'],
-    });
   }
 
   ngOnDestroy() {
