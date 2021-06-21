@@ -36,9 +36,14 @@ export class UserService {
   }
 
   addUser(user: User) {
-    this.http.post(this.addUserUrl, user).subscribe((response) => {
-      console.log(response);
-    });
+    this.http.post(this.addUserUrl, user).subscribe(
+      () => {
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        this.authStatusListener.next(false);
+      }
+    );
   }
 
   loginUser(authData: AuthData) {
