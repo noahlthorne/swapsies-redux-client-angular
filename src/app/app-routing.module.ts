@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GamesListComponent } from './components/games/games-list/games-list.component';
 import { ListingCreateComponent } from './components/listings/listing-create/listing-create.component';
 import { GameShowComponent } from './components/games/game-show/game-show.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { SignupComponent } from './components/auth/signup/signup.component';
+
 import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
@@ -23,12 +22,11 @@ const routes: Routes = [
     component: GameShowComponent,
   },
   {
-    path: 'sign-up',
-    component: SignupComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
+    path: 'auth',
+    loadChildren: () =>
+      import('./components/auth/auth.module').then(
+        (module) => module.AuthModule
+      ),
   },
 ];
 
