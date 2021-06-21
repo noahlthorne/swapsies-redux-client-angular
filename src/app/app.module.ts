@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,8 @@ import { ListingCreateComponent } from './components/listings/listing-create/lis
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AuthInterceptor } from './services/auth/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { AuthInterceptor } from './services/auth/auth-interceptor';
     ListingCreateComponent,
     SignupComponent,
     LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,10 +67,13 @@ import { AuthInterceptor } from './services/auth/auth-interceptor';
     MatPaginatorModule,
     MatTabsModule,
     MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent],
 })
 export class AppModule {}

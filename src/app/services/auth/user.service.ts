@@ -54,23 +54,28 @@ export class UserService {
         expiresIn: number;
         userId: string;
       }>(this.loginUserUrl, authData)
-      .subscribe((response) => {
-        console.log(response);
-        this.authToken = response.accessToken;
-        if (this.authToken) {
-          const expiresInDuration = response.expiresIn;
-          this.setAuthTimeout(expiresInDuration);
-          this.isAuthenticated = true;
-          this.userId = response.userId;
-          this.authStatusListener.next(true);
-          const now = new Date();
-          const expirationDate = new Date(
-            now.getTime() + expiresInDuration * 1000
-          );
-          this.saveAuthData(this.authToken, expirationDate, this.userId);
-          this.router.navigate(['/']);
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.authToken = response.accessToken;
+          if (this.authToken) {
+            const expiresInDuration = response.expiresIn;
+            this.setAuthTimeout(expiresInDuration);
+            this.isAuthenticated = true;
+            this.userId = response.userId;
+            this.authStatusListener.next(true);
+            const now = new Date();
+            const expirationDate = new Date(
+              now.getTime() + expiresInDuration * 1000
+            );
+            this.saveAuthData(this.authToken, expirationDate, this.userId);
+            this.router.navigate(['/']);
+          }
+        },
+        (error) => {
+          this.authStatusListener.next(false);
         }
-      });
+      );
   }
 
   autoAuthUser() {
