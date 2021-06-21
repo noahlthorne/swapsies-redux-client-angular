@@ -4,6 +4,9 @@ import { Observable, Subject } from 'rxjs';
 import { Listing } from 'src/app/models/Listing.model';
 import { map } from 'rxjs/operators';
 import { Game } from 'src/app/models/Game.model';
+import { environment } from '../../../environments/environment';
+
+const SERVER_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +19,7 @@ export class ListingService {
   constructor(private http: HttpClient) {}
 
   getGameListings = (gameId: string) => {
-    const gamesListingsUrl: string = `http://localhost:5000/api/games/${gameId}/listings`;
+    const gamesListingsUrl: string = `${SERVER_URL}/games/${gameId}/listings`;
     return this.http
       .get<{ listings: any }>(gamesListingsUrl)
       .pipe(
@@ -46,7 +49,7 @@ export class ListingService {
   getListingUser = async (userId: string) => {};
 
   addListing = (gameId: string, condition: string, image: File | string) => {
-    const gamesListingsUrl: string = `http://localhost:5000/api/games/${gameId}/listings`;
+    const gamesListingsUrl: string = `${SERVER_URL}/games/${gameId}/listings`;
     const listingData = new FormData();
     listingData.append('game', gameId);
     listingData.append('condition', condition);

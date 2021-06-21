@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthData, User } from 'src/app/models/User.model';
+import { environment } from '../../../environments/environment';
+
+const USERS_URL = environment.apiUrl + '/users';
+const SESSIONS_URL = environment.apiUrl + '/sessions';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +17,6 @@ export class UserService {
   private userId: string | null;
   private tokenTimer: NodeJS.Timer;
   private authStatusListener = new Subject<boolean>();
-
-  private addUserUrl: string = 'http://localhost:5000/api/users';
-  private loginUserUrl: string = 'http://localhost:5000/api/sessions';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -36,7 +37,7 @@ export class UserService {
   }
 
   addUser(user: User) {
-    this.http.post(this.addUserUrl, user).subscribe(
+    this.http.post(USERS_URL, user).subscribe(
       () => {
         this.router.navigate(['/']);
       },
@@ -53,7 +54,7 @@ export class UserService {
         refreshToken: string;
         expiresIn: number;
         userId: string;
-      }>(this.loginUserUrl, authData)
+      }>(SESSIONS_URL, authData)
       .subscribe(
         (response) => {
           console.log(response);

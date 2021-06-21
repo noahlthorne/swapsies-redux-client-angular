@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Game, SortOption } from '../../models/Game.model';
 import { Listing } from 'src/app/models/Listing.model';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+
+const SERVER_URL = environment.apiUrl + '/games';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +14,6 @@ import { map } from 'rxjs/operators';
 export class GameService {
   private games: Game[] = [];
   private gamesUpdated = new Subject<{ games: Game[]; gamesCount: number }>();
-  private gamesUrl: string = 'http://localhost:5000/api/games';
-
   constructor(private http: HttpClient) {}
 
   getGames = (
@@ -23,7 +24,7 @@ export class GameService {
   ) => {
     const queryParams = `?gameconsole=${selectedConsole}&sortby=${sortBy.value}&orderby=${sortBy.order}&pagesize=${gamesPerPage}&currentpage=${currentPage}`;
     return this.http
-      .get<{ games: any; maxGames: number }>(this.gamesUrl + queryParams)
+      .get<{ games: any; maxGames: number }>(SERVER_URL + queryParams)
       .pipe(
         map((gameData) => {
           return {
@@ -52,7 +53,7 @@ export class GameService {
   }
 
   getGame = (gameId: string) => {
-    return this.http.get<any>(`${this.gamesUrl}/${gameId}`).pipe(
+    return this.http.get<any>(`${SERVER_URL}/${gameId}`).pipe(
       map((gameData) => {
         return {
           ...gameData.game,
@@ -63,6 +64,6 @@ export class GameService {
   };
 
   getGameListings = (gameId: string | null): Observable<Listing> => {
-    return this.http.get<Listing>(`${this.gamesUrl}/${gameId}`);
+    return this.http.get<Listing>(`${SERVER_URL}/${gameId}`);
   };
 }
