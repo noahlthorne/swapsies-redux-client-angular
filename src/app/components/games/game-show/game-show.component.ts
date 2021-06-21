@@ -56,10 +56,15 @@ export class GameShowComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('gameId')) {
         this.gameId = paramMap.get('gameId')!;
-        this.gameService.getGame(this.gameId).subscribe((game) => {
-          this.isLoading = false;
-          this.game = game;
-        });
+        this.gameService.getGame(this.gameId).subscribe(
+          (game) => {
+            this.isLoading = false;
+            this.game = game;
+          },
+          () => {
+            this.isLoading = false;
+          }
+        );
       }
     });
     this.userIsAuthenticated = this.userService.getAuthStatus();
