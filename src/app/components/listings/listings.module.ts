@@ -23,11 +23,6 @@ import { ListingCreateComponent } from './listing-create/listing-create.componen
     ReactiveFormsModule,
     FormsModule,
   ],
-  exports: [
-    ListingsContainerComponent,
-    ListingsListComponent,
-    ListingCardComponent,
-    ListingCreateComponent,
-  ],
+  exports: [ListingsContainerComponent, ListingCreateComponent],
 })
 export class ListingsModule {}
