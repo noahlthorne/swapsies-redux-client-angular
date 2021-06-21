@@ -25,11 +25,5 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
     FormsModule,
     ListingsModule,
   ],
-  exports: [
-    GamesContainerComponent,
-    GameShowComponent,
-    GameCardComponent,
-    GamesListComponent,
-  ],
 })
 export class GamesModule {}
