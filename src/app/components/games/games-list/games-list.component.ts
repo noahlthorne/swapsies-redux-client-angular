@@ -111,6 +111,7 @@ export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   sortByChange(sortBy: SortOption) {
+    this.isLoading = true;
     this.sortBy = sortBy;
     this.gameService.getGames(
       this.gamesPerPage,
