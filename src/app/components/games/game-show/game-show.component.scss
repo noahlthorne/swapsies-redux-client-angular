@@ -5,18 +5,37 @@ mat-spinner {
 }
 
 .container {
-  margin: auto;
-  width: 90%;
+  margin: 2rem;
   padding: 24px;
   color: #858585;
   border-radius: 4px;
+  display: flex;
+  @media (min-width: 100px) and (max-width: 500px) {
+    flex-direction: column;
+    padding: 0;
+    text-align: center;
+  }
 }
 
 .game-details {
   background-color: #1d1d1d;
   padding: 2em;
+  width: 60%;
   border-radius: 4px;
-  margin: auto;
+  margin-right: 2rem;
+  @media (min-width: 100px) and (max-width: 500px) {
+    width: auto;
+    margin: 0;
+  }
+}
+
+.listing-content {
+  width: 100%;
+  margin-left: 1rem;
+  @media (min-width: 100px) and (max-width: 500px) {
+    width: auto;
+    margin: 0;
+  }
 }
 
 .listings {
@@ -31,10 +50,13 @@ mat-spinner {
   height: 3em;
   font-size: 21px;
   width: 9em;
-  margin-top: 2rem;
   background-color: #8fffc3;
   color: #232323;
   align-items: center;
+  @media (min-width: 100px) and (max-width: 500px) {
+    margin: auto;
+    margin-top: 2rem;
+  }
 }
 
 .game-cover {

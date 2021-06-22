@@ -8,7 +8,7 @@ form {
 }
 
 mat-card {
-  width: 40%;
+  width: 60%;
   height: auto;
   padding: 24px;
   background-color: #1f1f1f;
@@ -41,6 +41,10 @@ input[type="file"] {
   margin-bottom: 2rem;
   margin-top: 2rem;
   border-radius: 8px;
+  @media (min-width: 100px) and (max-width: 500px) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .image-preview {
@@ -66,4 +70,7 @@ input[type="file"] {
   height: 40px;
   width: 30%;
   margin: auto;
+  @media (min-width: 100px) and (max-width: 500px) {
+    padding: 0;
+  }
 }
