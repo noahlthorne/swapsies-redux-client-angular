@@ -40,7 +40,6 @@ mat-spinner {
 
 .listings {
   margin: auto;
-  margin-top: 2rem;
 }
 
 .list-game-button {
@@ -53,9 +52,11 @@ mat-spinner {
   background-color: #8fffc3;
   color: #232323;
   align-items: center;
+  margin-bottom: 2rem;
   @media (min-width: 100px) and (max-width: 500px) {
     margin: auto;
     margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
