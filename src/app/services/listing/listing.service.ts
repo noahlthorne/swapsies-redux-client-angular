@@ -57,7 +57,6 @@ export class ListingService {
     this.http
       .post<{ listing: Listing }>(gamesListingsUrl, listingData)
       .subscribe((response) => {
-        console.log('GLORP', response);
         this.listings.push(response.listing);
         this.listingsUpdated.next([...this.listings]);
       });

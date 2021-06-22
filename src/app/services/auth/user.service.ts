@@ -57,7 +57,6 @@ export class UserService {
       }>(SESSIONS_URL, authData)
       .subscribe(
         (response) => {
-          console.log(response);
           this.authToken = response.accessToken;
           if (this.authToken) {
             const expiresInDuration = response.expiresIn;
