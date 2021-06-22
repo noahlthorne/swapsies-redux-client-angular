@@ -28,10 +28,10 @@ export class ListingCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      condition: new FormControl('', {
+      condition: new FormControl(null, {
         validators: [Validators.required],
       }),
-      image: new FormControl('', {
+      image: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [mimeType],
       }),
