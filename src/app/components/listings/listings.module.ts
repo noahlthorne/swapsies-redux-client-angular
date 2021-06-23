@@ -8,6 +8,7 @@ import { ListingsContainerComponent } from './listings-container/listings-contai
 import { ListingsListComponent } from './listings-list/listings-list.component';
 import { ListingCardComponent } from './listing-card/listing-card.component';
 import { ListingCreateComponent } from './listing-create/listing-create.component';
+import { ListingShowComponent } from './listing-show/listing-show.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ListingCreateComponent } from './listing-create/listing-create.componen
     ListingsListComponent,
     ListingCardComponent,
     ListingCreateComponent,
+    ListingShowComponent,
   ],
   imports: [
     CommonModule,
