@@ -1,1 +1,6 @@
-<p>listing-show works!</p>
+<div class="container">
+  <mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
+  <h1>{{ game?.title }}</h1>
+  <h1>{{ user?.firstName }}</h1>
+  <h1>{{ listing?.condition }}</h1>
+</div>

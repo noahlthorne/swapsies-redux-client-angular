@@ -8,6 +8,7 @@ import { GamesContainerComponent } from './games-container/games-container.compo
 import { GamesListComponent } from './games-list/games-list.component';
 import { GameCardComponent } from './game-card/game-card.component';
 import { GameShowComponent } from './game-show/game-show.component';
+import { GamesRoutingModule } from './games-routing.module';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
     ReactiveFormsModule,
     FormsModule,
     ListingsModule,
+    GamesRoutingModule,
   ],
 })
 export class GamesModule {}

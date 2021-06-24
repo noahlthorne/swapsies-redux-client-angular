@@ -1,18 +1,20 @@
 <div>
   <div class="grid-container">
-    <div class="listing-card">
-      <div class="listing-info">
-        <h5 class="listing-title">{{ listing.condition }}</h5>
-        <div class="listing-user">
-          <p>Listed by:</p>
-          <p>{{ listing.user.firstName }}</p>
-        </div>
-        <div class="status">
-          <p>Status:</p>
-          <p *ngIf="listing.status">{{ listing.status }}</p>
-          <p *ngIf="!listing.status">Unavailable</p>
+    <a [routerLink]="['../listings', listing.id]" class="listing-link">
+      <div class="listing-card">
+        <div class="listing-info">
+          <h5 class="listing-title">{{ listing.condition }}</h5>
+          <div class="listing-user">
+            <p>Listed by:</p>
+            <p>{{ listing.user.firstName }}</p>
+          </div>
+          <div class="status">
+            <p>Status:</p>
+            <p *ngIf="listing.status">{{ listing.status }}</p>
+            <p *ngIf="!listing.status">Unavailable</p>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
 </div>
