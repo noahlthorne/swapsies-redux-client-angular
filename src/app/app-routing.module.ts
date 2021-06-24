@@ -13,13 +13,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'games/:gameId/listing-new',
-    component: ListingCreateComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'games/:gameId',
-    component: GameShowComponent,
+    path: 'games',
+    loadChildren: () =>
+      import('./components/games/games.module').then(
+        (module) => module.GamesModule
+      ),
   },
   {
     path: 'auth',
