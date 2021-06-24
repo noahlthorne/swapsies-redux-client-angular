@@ -46,7 +46,9 @@ export class ListingService {
     return this.listingsUpdated.asObservable();
   };
 
-  getListingUser = async (userId: string) => {};
+  getListing(listingId: string) {
+    return this.http.get<any>(`${SERVER_URL}/listings/${listingId}`);
+  }
 
   addListing = (gameId: string, condition: string, image: File | string) => {
     const gamesListingsUrl: string = `${SERVER_URL}/games/${gameId}/listings`;
