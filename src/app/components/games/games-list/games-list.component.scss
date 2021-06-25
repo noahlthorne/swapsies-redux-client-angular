@@ -19,6 +19,22 @@ mat-tab-group {
   opacity: 1;
 }
 
+mat-form-field {
+  margin-right: 3rem;
+}
+
+mat-paginator {
+  margin-right: 3rem;
+}
+
+input {
+  color: #999999;
+}
+
+mat-icon {
+  color: #999999;
+}
+
 .mat-tabs-opaque {
   background-color: #424242;
 }
@@ -61,8 +77,4 @@ mat-tab-group {
 #filter-options {
   display: flex;
   justify-content: left;
-}
-
-#sort {
-  margin-right: 2rem;
 }
