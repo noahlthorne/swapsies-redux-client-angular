@@ -120,4 +120,8 @@ export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
       this.sortBy
     );
   }
+
+  searchGames(event: Event) {
+    console.log(event.target);
+  }
 }
