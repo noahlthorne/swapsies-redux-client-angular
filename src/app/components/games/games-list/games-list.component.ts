@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
 import { Game, SortOption } from '../../../models/Game.model';
 import { GameService } from '../../../services/game/game.service';
 
@@ -49,6 +50,7 @@ export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
   gamesPerPage: number = 10;
   currentPage: number = 1;
   pageSizeOptions: Array<number> = [10, 25, 50];
+  timer: number;
 
   private gamesSub: Subscription;
   constructor(private gameService: GameService) {}
@@ -121,7 +123,17 @@ export class GamesListComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  searchGames(event: Event) {
-    console.log(event.target);
+  searchGames(form: NgForm) {
+    this.isLoading = true;
+    clearTimeout(this.timer);
+    this.timer = window.setTimeout(() => {
+      this.gameService.getGames(
+        this.gamesPerPage,
+        this.currentPage,
+        this.selectedConsole,
+        this.sortBy,
+        form.value.search
+      );
+    }, 400);
   }
 }
