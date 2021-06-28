@@ -20,9 +20,10 @@ export class GameService {
     gamesPerPage: number,
     currentPage: number,
     selectedConsole: string,
-    sortBy: SortOption
+    sortBy: SortOption,
+    search: string = ''
   ) => {
-    const queryParams = `?gameconsole=${selectedConsole}&sortby=${sortBy.value}&orderby=${sortBy.order}&pagesize=${gamesPerPage}&currentpage=${currentPage}`;
+    const queryParams = `?gameconsole=${selectedConsole}&sortby=${sortBy.value}&orderby=${sortBy.order}&pagesize=${gamesPerPage}&currentpage=${currentPage}&search=${search}`;
     return this.http
       .get<{ games: any; maxGames: number }>(SERVER_URL + queryParams)
       .pipe(
