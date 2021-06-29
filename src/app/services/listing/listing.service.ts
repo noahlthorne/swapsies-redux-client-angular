@@ -57,9 +57,12 @@ export class ListingService {
     listingData.append('condition', condition);
     listingData.append('image', image, 'test');
     this.http
-      .post<{ listing: Listing }>(gamesListingsUrl, listingData)
+      .post<{ listing: any }>(gamesListingsUrl, listingData)
       .subscribe((response) => {
-        this.listings.push(response.listing);
+        this.listings.push({
+          ...response.listing,
+          id: response.listing._id,
+        });
         this.listingsUpdated.next([...this.listings]);
       });
   };
