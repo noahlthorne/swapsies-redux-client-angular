@@ -1,5 +1,5 @@
-<div class="container">
-  <mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
+<mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
+<div *ngIf="!isLoading" class="container">
   <div class="user-info">
     <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
     <h1>{{ user?.email }}</h1>
