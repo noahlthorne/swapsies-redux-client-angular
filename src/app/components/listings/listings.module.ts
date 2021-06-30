@@ -9,6 +9,7 @@ import { ListingsListComponent } from './listings-list/listings-list.component';
 import { ListingCardComponent } from './listing-card/listing-card.component';
 import { ListingCreateComponent } from './listing-create/listing-create.component';
 import { ListingShowComponent } from './listing-show/listing-show.component';
+import { SwapsModule } from '../swaps/swaps.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ListingShowComponent } from './listing-show/listing-show.component';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    SwapsModule,
   ],
   exports: [ListingsContainerComponent, ListingCreateComponent],
 })
