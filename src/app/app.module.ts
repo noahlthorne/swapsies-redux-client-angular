@@ -12,6 +12,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { GamesModule } from './components/games/games.module';
 import { ListingsModule } from './components/listings/listings.module';
+import { SwapsModule } from './components/swaps/swaps.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, ErrorComponent],
@@ -23,6 +24,7 @@ import { ListingsModule } from './components/listings/listings.module';
     AngularMaterialModule,
     GamesModule,
     ListingsModule,
+    SwapsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
