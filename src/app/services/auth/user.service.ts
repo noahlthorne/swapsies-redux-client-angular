@@ -129,7 +129,7 @@ export class UserService {
   private getAuthData() {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expiration');
-    const userId = localStorage.getItem('userid');
+    const userId = localStorage.getItem('userId');
     if (!token || !expirationDate) return;
     return {
       token: token,
