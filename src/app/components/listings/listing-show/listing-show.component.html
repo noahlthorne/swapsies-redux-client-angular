@@ -1,6 +1,24 @@
 <div class="container">
   <mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
-  <h1>{{ game?.title }}</h1>
-  <h1>{{ user?.firstName }}</h1>
-  <h1>{{ listing?.condition }}</h1>
+  <div class="user-info">
+    <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
+    <h1>{{ user?.email }}</h1>
+    <h1>{{ listing?.condition }}</h1>
+    <button
+      mat-raised-button
+      class="swap-button"
+      *ngIf="userIsAuthenticated"
+      (click)="toggle()"
+    >
+      Create Swap
+    </button>
+    <div [@popOverState]="stateName" id="list-create-render" *ngIf="display">
+      <app-swap-create [listingRequested]="listing"></app-swap-create>
+    </div>
+  </div>
+  <div class="game-info">
+    <img src="{{ game?.coverImage }}" alt="" />
+    <h1>{{ game?.title }}</h1>
+    <h1>{{ game?.genres }}</h1>
+  </div>
 </div>
