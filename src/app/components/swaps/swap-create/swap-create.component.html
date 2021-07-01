@@ -1,1 +1,13 @@
-<p>swap-create works!</p>
+<form [formGroup]="swapForm" (submit)="onAddSwap()">
+  <mat-form-field appearance="fill">
+    <mat-label>Select a game to trade</mat-label>
+    <mat-select placeformControlName="listingOffered" [(value)]="selected">
+      <mat-option
+        *ngFor="let listing of currentUsersListings"
+        value="{{ listing.game.title }}"
+        >{{ listing.game.title }} - {{ listing.game.gameConsole }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button type="submit" class="swap-button">Swap!</button>
+</form>
