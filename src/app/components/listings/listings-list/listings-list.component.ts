@@ -13,6 +13,7 @@ import { ListingService } from 'src/app/services/listing/listing.service';
 export class ListingsListComponent implements OnInit, OnDestroy {
   listings: Listing[] = [];
   userId: string | null;
+
   private listingsSub: Subscription;
   private gameId: string;
 
