@@ -27,11 +27,29 @@ export class ListingService {
           return listingData.listings.map((listing: any) => {
             this.game = listing.game;
             return {
+              ...listing,
               id: listing._id,
-              status: listing.status,
-              user: listing.user,
-              game: listing.game,
-              condition: listing.condition,
+            };
+          });
+        })
+      )
+      .subscribe((transformedListings) => {
+        this.listings = transformedListings;
+        this.listingsUpdated.next([...this.listings]);
+      });
+  };
+
+  getUserListings = (userId: string) => {
+    const usersListingsUrl: string = `${SERVER_URL}/users/${userId}/listings`;
+    return this.http
+      .get<{ listings: any }>(usersListingsUrl)
+      .pipe(
+        map((listingData) => {
+          return listingData.listings.map((listing: any) => {
+            this.game = listing.game;
+            return {
+              ...listing,
+              id: listing._id,
             };
           });
         })
