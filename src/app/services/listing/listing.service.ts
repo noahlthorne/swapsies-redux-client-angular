@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Listing } from 'src/app/models/Listing.model';
 import { map } from 'rxjs/operators';
 import { Game } from 'src/app/models/Game.model';
