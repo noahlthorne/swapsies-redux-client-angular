@@ -65,7 +65,14 @@ export class ListingService {
   };
 
   getListing(listingId: string) {
-    return this.http.get<any>(`${SERVER_URL}/listings/${listingId}`);
+    return this.http.get<any>(`${SERVER_URL}/listings/${listingId}`).pipe(
+      map((listingData) => {
+        return {
+          ...listingData,
+          id: listingData._id,
+        };
+      })
+    );
   }
 
   addListing = (gameId: string, condition: string, image: File | string) => {
