@@ -2,8 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Listing } from 'src/app/models/Listing.model';
+import { Swap } from 'src/app/models/Swap.model';
 import { UserService } from 'src/app/services/auth/user.service';
 import { ListingService } from 'src/app/services/listing/listing.service';
+import { SwapService } from 'src/app/services/swap/swap.service';
 
 @Component({
   selector: 'app-swap-create',
@@ -14,6 +16,7 @@ export class SwapCreateComponent implements OnInit {
   @Input() listingRequested: Listing;
   currentUsersListings: Listing[] = [];
   currentUserId: string;
+  newSwap: Swap;
   swapForm: FormGroup;
   selected: Listing;
 
@@ -21,7 +24,8 @@ export class SwapCreateComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private listingService: ListingService
+    private listingService: ListingService,
+    private swapService: SwapService
   ) {}
 
   ngOnInit(): void {
@@ -43,5 +47,9 @@ export class SwapCreateComponent implements OnInit {
     if (this.swapForm.invalid) {
       return;
     }
+    this.swapService.addSwap(
+      this.listingRequested.id,
+      this.swapForm.value.listingOffered
+    );
   }
 }
