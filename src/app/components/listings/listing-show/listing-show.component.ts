@@ -6,6 +6,9 @@ import { User } from 'src/app/models/User.model';
 import { UserService } from 'src/app/services/auth/user.service';
 import { ListingService } from 'src/app/services/listing/listing.service';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { Swap } from 'src/app/models/Swap.model';
+import { SwapService } from 'src/app/services/swap/swap.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-listing-show',
@@ -34,16 +37,19 @@ export class ListingShowComponent implements OnInit {
   listing: Listing;
   user: User;
   game: Game;
+  swaps: Swap[] = [];
   isLoading: boolean = false;
   display: boolean = false;
   userIsAuthenticated: boolean = false;
 
   private listingId: string;
+  private swapsSub: Subscription;
 
   constructor(
     private listingService: ListingService,
     public route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private swapsService: SwapService
   ) {}
 
   ngOnInit(): void {
@@ -62,6 +68,13 @@ export class ListingShowComponent implements OnInit {
             this.isLoading = false;
           }
         );
+        this.swapsService.getListingsSwaps(this.listingId);
+        this.swapsSub = this.swapsService
+          .getSwapsUpdateListener()
+          .subscribe((swaps: Swap[]) => {
+            console.log('SWAPS', swaps);
+            this.swaps = swaps;
+          });
       }
     });
     this.userIsAuthenticated = this.userService.getAuthStatus();
