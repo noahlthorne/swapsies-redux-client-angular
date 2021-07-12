@@ -16,16 +16,47 @@ mat-spinner {
   justify-content: space-around;
 }
 
+.swap-info {
+  width: 45%;
+  border-radius: 4px;
+}
+
 .user-info {
-  width: 43%;
   background-color: #1d1d1d;
   padding: 2rem;
   border-radius: 4px;
 }
 
 .game-info {
-  width: 43%;
+  width: 45%;
   background-color: #1d1d1d;
   padding: 2rem;
   border-radius: 4px;
+}
+
+.grid-container {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1em;
+  display: grid;
+  grid-gap: 1.3em;
+  grid-template-columns: repeat(3, 3fr);
+  grid-template-rows: 1fr;
+  margin-right: 1.3em;
+  @media (min-width: 100px) and (max-width: 500px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: 501px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 2000px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.swaps-offered {
+  margin-top: 1rem;
 }
