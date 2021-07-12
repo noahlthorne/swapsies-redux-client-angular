@@ -5,9 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 
 import { SwapCreateComponent } from './swap-create/swap-create.component';
+import { SwapCardComponent } from './swap-card/swap-card.component';
 
 @NgModule({
-  declarations: [SwapCreateComponent],
+  declarations: [SwapCreateComponent, SwapCardComponent],
   imports: [
     CommonModule,
     AngularMaterialModule,
@@ -15,6 +16,6 @@ import { SwapCreateComponent } from './swap-create/swap-create.component';
     ReactiveFormsModule,
     FormsModule,
   ],
-  exports: [SwapCreateComponent],
+  exports: [SwapCreateComponent, SwapCardComponent],
 })
 export class SwapsModule {}
