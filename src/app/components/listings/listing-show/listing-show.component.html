@@ -1,19 +1,27 @@
 <mat-spinner color="accent" class="spinner" *ngIf="isLoading"></mat-spinner>
 <div *ngIf="!isLoading" class="container">
-  <div class="user-info">
-    <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
-    <h1>{{ user?.email }}</h1>
-    <h1>{{ listing?.condition }}</h1>
-    <button
-      mat-raised-button
-      class="create-swap-button"
-      *ngIf="userIsAuthenticated"
-      (click)="toggle()"
-    >
-      Create Swap
-    </button>
-    <div [@popOverState]="stateName" id="list-create-render" *ngIf="display">
-      <app-swap-create [listingRequested]="listing"></app-swap-create>
+  <div class="swap-info">
+    <div class="user-info">
+      <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
+      <h1>{{ user?.email }}</h1>
+      <h1>{{ listing?.condition }}</h1>
+      <button
+        mat-raised-button
+        class="create-swap-button"
+        *ngIf="userIsAuthenticated"
+        (click)="toggle()"
+      >
+        Create Swap
+      </button>
+      <div [@popOverState]="stateName" id="list-create-render" *ngIf="display">
+        <app-swap-create [listingRequested]="listing"></app-swap-create>
+      </div>
+    </div>
+    <div class="swaps-list">
+      <h1 class="swaps-offered">Swaps offered for this listing</h1>
+      <div class="grid-container">
+        <app-swap-card *ngFor="let swap of swaps" [swap]="swap"></app-swap-card>
+      </div>
     </div>
   </div>
   <div class="game-info">
