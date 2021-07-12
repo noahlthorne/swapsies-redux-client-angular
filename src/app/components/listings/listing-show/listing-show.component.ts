@@ -72,7 +72,6 @@ export class ListingShowComponent implements OnInit {
         this.swapsSub = this.swapsService
           .getSwapsUpdateListener()
           .subscribe((swaps: Swap[]) => {
-            console.log('SWAPS', swaps);
             this.swaps = swaps;
           });
       }
