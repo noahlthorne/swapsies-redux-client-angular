@@ -18,7 +18,11 @@
         routerLinkActive="mat-accent"
         >Login</a
       >
-      <button (click)="onLogout()" *ngIf="userIsAuthenticated" mat-button>
+      <button
+        routerLink="users/{{ userId }}"
+        *ngIf="userIsAuthenticated"
+        mat-button
+      >
         Profile
       </button>
       <button (click)="onLogout()" *ngIf="userIsAuthenticated" mat-button>

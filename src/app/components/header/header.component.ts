@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/auth/user.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   userIsAuthenticated: boolean = false;
+  userId: string = '';
   private authListenerSub: Subscription;
 
   constructor(private userService: UserService) {}
@@ -19,6 +20,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
+        if (this.userIsAuthenticated) {
+          this.userId = this.userService.getUserId()!;
+        }
       });
   }
 
