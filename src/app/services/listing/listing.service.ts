@@ -80,7 +80,7 @@ export class ListingService {
     const listingData = new FormData();
     listingData.append('game', gameId);
     listingData.append('condition', condition);
-    listingData.append('image', image, 'test');
+    listingData.append('image', image);
     this.http
       .post<{ listing: any }>(gamesListingsUrl, listingData)
       .subscribe((response) => {
