@@ -37,7 +37,7 @@ export class ListingShowComponent implements OnInit {
   listing: Listing;
   user: User;
   game: Game;
-  swaps: Swap[] = [];
+  swaps: Swap[];
   isLoading: boolean = false;
   display: boolean = false;
   userIsAuthenticated: boolean = false;
