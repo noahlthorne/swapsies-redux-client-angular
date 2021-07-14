@@ -26,11 +26,16 @@ export class SwapService {
       .post<{ swap: any }>(addSwapUrl, swapData)
       .subscribe((response) => {
         console.log(response);
+        this.swaps.push({
+          ...response.swap,
+          id: response.swap._id,
+        });
+        this.swapsUpdated.next([...this.swaps]);
       });
   }
 
-  getListingsSwaps(listingId: string) {
-    const listingsSwapsUrl = `${SERVER_URL}/listings/${listingId}/swaps`;
+  getInputsSwaps(id: string, inputName: string) {
+    const listingsSwapsUrl = `${SERVER_URL}/${inputName}/${id}/swaps`;
     return this.http
       .get<{ swaps: any }>(listingsSwapsUrl)
       .pipe(

@@ -68,7 +68,7 @@ export class ListingShowComponent implements OnInit {
             this.isLoading = false;
           }
         );
-        this.swapsService.getListingsSwaps(this.listingId);
+        this.swapsService.getInputsSwaps(this.listingId, 'listings');
         this.swapsSub = this.swapsService
           .getSwapsUpdateListener()
           .subscribe((swaps: Swap[]) => {
