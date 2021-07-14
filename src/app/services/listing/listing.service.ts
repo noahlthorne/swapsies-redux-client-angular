@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { Game } from 'src/app/models/Game.model';
 import { environment } from '../../../environments/environment';
 
-const SERVER_URL = environment.apiUrl;
+const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class ListingService {
   constructor(private http: HttpClient) {}
 
   getGameListings = (gameId: string) => {
-    const gamesListingsUrl: string = `${SERVER_URL}/games/${gameId}/listings`;
+    const gamesListingsUrl: string = `${API_URL}/games/${gameId}/listings`;
     return this.http
       .get<{ listings: any }>(gamesListingsUrl)
       .pipe(
@@ -40,7 +40,7 @@ export class ListingService {
   };
 
   getUserListings = (userId: string) => {
-    const usersListingsUrl: string = `${SERVER_URL}/users/${userId}/listings`;
+    const usersListingsUrl: string = `${API_URL}/users/${userId}/listings`;
     return this.http
       .get<{ listings: any }>(usersListingsUrl)
       .pipe(
@@ -65,7 +65,7 @@ export class ListingService {
   };
 
   getListing(listingId: string) {
-    return this.http.get<any>(`${SERVER_URL}/listings/${listingId}`).pipe(
+    return this.http.get<any>(`${API_URL}/listings/${listingId}`).pipe(
       map((listingData) => {
         return {
           ...listingData,
@@ -76,7 +76,7 @@ export class ListingService {
   }
 
   addListing = (gameId: string, condition: string, image: File | string) => {
-    const gamesListingsUrl: string = `${SERVER_URL}/games/${gameId}/listings`;
+    const gamesListingsUrl: string = `${API_URL}/games/${gameId}/listings`;
     const listingData = new FormData();
     listingData.append('game', gameId);
     listingData.append('condition', condition);
