@@ -32,7 +32,7 @@ export class ListingsListComponent implements OnInit, OnDestroy {
       }
     });
     this.listingsSub = this.listingService
-      .getListingUpdateListener()
+      .getListingsUpdateListener()
       .subscribe((listings: Listing[]) => {
         this.listings = listings;
       });

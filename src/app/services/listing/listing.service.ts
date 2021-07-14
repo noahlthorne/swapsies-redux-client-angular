@@ -60,7 +60,7 @@ export class ListingService {
       });
   };
 
-  getListingUpdateListener = () => {
+  getListingsUpdateListener = () => {
     return this.listingsUpdated.asObservable();
   };
 

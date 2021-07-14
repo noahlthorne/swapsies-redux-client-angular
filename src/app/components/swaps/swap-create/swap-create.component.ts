@@ -32,7 +32,7 @@ export class SwapCreateComponent implements OnInit {
     this.currentUserId = this.userService.getUserId()!;
     this.listingService.getUserListings(this.currentUserId);
     this.listingsSub = this.listingService
-      .getListingUpdateListener()
+      .getListingsUpdateListener()
       .subscribe((listings: Listing[]) => {
         this.currentUsersListings = listings;
       });
