@@ -5,6 +5,7 @@ import { Listing } from 'src/app/models/Listing.model';
 import { Swap } from 'src/app/models/Swap.model';
 import { UserService } from 'src/app/services/auth/user.service';
 import { ListingService } from 'src/app/services/listing/listing.service';
+import { SocketioService } from 'src/app/services/socketio/socketio.service';
 import { SwapService } from 'src/app/services/swap/swap.service';
 
 @Component({
@@ -25,7 +26,8 @@ export class SwapCreateComponent implements OnInit {
   constructor(
     private userService: UserService,
     private listingService: ListingService,
-    private swapService: SwapService
+    private swapService: SwapService,
+    private webSocketService: SocketioService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +49,10 @@ export class SwapCreateComponent implements OnInit {
     if (this.swapForm.invalid) {
       return;
     }
+    this.webSocketService.emit('swap-create', {
+      requesterId: this.currentUserId,
+      requestedId: this.listingRequested.user._id,
+    });
     this.swapService.addSwap(
       this.listingRequested.id,
       this.swapForm.value.listingOffered
